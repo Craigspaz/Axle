@@ -1,4 +1,5 @@
 #include "MouseHandler.h"
+#include "Exception.h"
 
 MouseHandler::MouseHandler()
 	: _x(0), _y(0)
@@ -81,6 +82,7 @@ void MouseHandler::mouse_button_callbackFun(GLFWwindow* window, int button, int 
 
 bool MouseHandler::getMouseState(int button)
 {
+	checkIfNULL(MOUSE, "Mouse button array is NULL", EXCEPTION_THROW);
 	return MOUSE[button];
 }
 

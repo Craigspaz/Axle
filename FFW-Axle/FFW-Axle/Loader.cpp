@@ -44,6 +44,7 @@ GLuint Loader::createVAO()
 
 void Loader::storeDataInAttributeList(int attribNumber, int size, float* data, int vertexCount)
 {
+	checkIfNULL(data, "Can't store a NULL list of vertices", EXCEPTION_THROW);
 	GLuint vboID;
 	glGenBuffers(1, &vboID);
 	vbos->push_back(vboID);
@@ -61,18 +62,28 @@ void Loader::unbindVAO()
 
 Mesh* Loader::loadMesh(float* positions, int* indices, float* textureCoords, int vertexCount, int indicesCount)
 {
+	checkIfNULL(positions,"Can't load a mesh with NULL vertices", EXCEPTION_THROW);
+	checkIfNULL(indices,"Can't have a mesh with NULL indices", EXCEPTION_THROW);
+	checkIfNULL(textureCoords,"Can't have a mesh without a texture coordinates for it", EXCEPTION_THROW);
+
+	if (vertexCount <= 0 || indicesCount <= 0)
+	{
+		printf("A potentially boring mesh has been loaded");
+	}
+
 	GLuint vaoID = createVAO();
 	bindIndicesBuffer(indices, indicesCount);
 	storeDataInAttributeList(0, 3, positions, vertexCount);
 	storeDataInAttributeList(1, 2, textureCoords, vertexCount);
 	unbindVAO();
-	printf("Number of vertices: %d\n", vertexCount);
 	return new Mesh(vaoID, indicesCount);
 }
 
 
 void Loader::bindIndicesBuffer(int* indices, int indicesCount)
 {
+	checkIfNULL(indices,"Can't bind a NULL indices array", EXCEPTION_THROW);
+
 	GLuint vboID;
 	glGenBuffers(1, &vboID);
 	vbos->push_back(vboID);
@@ -82,6 +93,7 @@ void Loader::bindIndicesBuffer(int* indices, int indicesCount)
 
 GLuint Loader::loadTexture(char* filename)
 {
+	checkIfNULL(filename,"Can't load a texture with a NULL path", EXCEPTION_THROW);
 	GLuint texture = SOIL_load_OGL_texture(filename, SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 	textures->push_back(texture);
 	return texture;
@@ -94,38 +106,14 @@ Based on the ThinMatrix's implementation
 */
 void processVertex(char* vertexData0, char* vertexData1, char* vertexData2, std::vector<int>* indices, std::vector<glm::vec2>* textures, std::vector<glm::vec3>* normals, float* textureArray,float* normalsArray)
 {
-	if (vertexData0 == NULL)
-	{
-		throwNullPointerException("VertexData0 is NULL in processVertex", 0);
-	}
-	if (vertexData1 == NULL)
-	{
-		throwNullPointerException("VertexData1 is NULL in processVertex", 0);
-	}
-	if (vertexData2 == NULL)
-	{
-		throwNullPointerException("VertexData2 is NULL in processVertex", 0);
-	}
-	if (indices == NULL)
-	{
-		throwNullPointerException("Indices is NULL in processVertex", 0);
-	}
-	if (textures == NULL)
-	{
-		throwNullPointerException("Textures is NULL in processVertex", 0);
-	}
-	if (normals == NULL)
-	{
-		throwNullPointerException("Normals is NULL in processVertex", 0);
-	}
-	if (textureArray == NULL)
-	{
-		throwNullPointerException("TextureArray is NULL in processVertex", 0);
-	}
-	if (normalsArray == NULL)
-	{
-		throwNullPointerException("NormalsArray is NULL in processVertex", 0);
-	}
+	checkIfNULL(vertexData0,"VertexData0 is NULL in processVertex", EXCEPTION_THROW);
+	checkIfNULL(vertexData1,"VertexData1 is NULL in processVertex", EXCEPTION_THROW);
+	checkIfNULL(vertexData2,"VertexData2 is NULL in processVertex", EXCEPTION_THROW);
+	checkIfNULL(indices,"Indices is NULL in processVertex", EXCEPTION_THROW);
+	checkIfNULL(textures,"Textures is NULL in processVertex", EXCEPTION_THROW);
+	checkIfNULL(normals,"Normals is NULL in processVertex", EXCEPTION_THROW);
+	checkIfNULL(textureArray, "TextureArray is NULL in processVertex", EXCEPTION_THROW);
+	checkIfNULL(normalsArray,"NormalsArray is NULL in processVertex", EXCEPTION_THROW);
 
 	// Re-orders values so they will be in order
 	int currentVertexPointer = ::atoi(vertexData0) - 1;
@@ -145,6 +133,7 @@ void processVertex(char* vertexData0, char* vertexData1, char* vertexData2, std:
 */
 Mesh* Loader::loadObj(char* filename)
 {
+	checkIfNULL(filename, "Can't load OBJ since the path is NULL", EXCEPTION_THROW);
 	std::ifstream file;
 	file.open(filename); // opens the file asked to by the parameter
 
@@ -154,22 +143,10 @@ Mesh* Loader::loadObj(char* filename)
 	std::vector<glm::vec3>* normals = new std::vector<glm::vec3>();
 	std::vector<int>* indices = new std::vector<int>();
 
-	if (vertices == NULL)
-	{
-		throwNullPointerException("Vertices is NULL in LoadOBJ", 0);
-	}
-	if (texCoords == NULL)
-	{
-		throwNullPointerException("TexCoords is NULL in LoadOBJ", 0);
-	}
-	if (normals == NULL)
-	{
-		throwNullPointerException("Normals is NULL in LoadOBJ", 0);
-	}
-	if (indices == NULL)
-	{
-		throwNullPointerException("Indices is NULL in LoadOBJ", 0);
-	}
+	checkIfNULL(vertices, "Vertices is NULL in LoadOBJ", EXCEPTION_THROW);
+	checkIfNULL(texCoords,"TexCoords is NULL in LoadOBJ", EXCEPTION_THROW);
+	checkIfNULL(normals,"Normals is NULL in LoadOBJ", EXCEPTION_THROW);
+	checkIfNULL(indices,"Indices is NULL in LoadOBJ", EXCEPTION_THROW);
 
 	float* verticesArray = NULL;
 	float* texturesArray = NULL;
@@ -303,14 +280,8 @@ Mesh* Loader::loadObj(char* filename)
 				{
 					texturesArray = new float[vertices->size() * 2];
 					normalsArray = new float[vertices->size() * 3];
-					if (texturesArray == NULL)
-					{
-						throwNullPointerException("TexturesArray is NULL in LoadOBJ", 0);
-					}
-					if (normalsArray == NULL)
-					{
-						throwNullPointerException("NormalsArray is NULL in LoadOBJ", 0);
-					}
+					checkIfNULL(texturesArray,"TexturesArray is NULL in LoadOBJ", EXCEPTION_THROW);
+					checkIfNULL(normalsArray,"NormalsArray is NULL in LoadOBJ", EXCEPTION_THROW);
 				}
 
 				char* str = (char*)line.c_str();
@@ -374,14 +345,9 @@ Mesh* Loader::loadObj(char* filename)
 
 		verticesArray = new float[vertices->size() * 3];
 		indicesArray = new int[indices->size()];
-		if (verticesArray == NULL)
-		{
-			throwNullPointerException("VerticesArray is NULL in LoadOBJ", 0);
-		}
-		if (indicesArray == NULL)
-		{
-			throwNullPointerException("IndicesArray is NULL in LoadOBJ", 0);
-		}
+		
+		checkIfNULL(verticesArray,"VerticesArray is NULL in LoadOBJ", EXCEPTION_THROW);
+		checkIfNULL(indicesArray,"IndicesArray is NULL in LoadOBJ", EXCEPTION_THROW);
 
 		int vertexPointer = 0;
 		for (int i = 0; i < vertices->size(); i++)
