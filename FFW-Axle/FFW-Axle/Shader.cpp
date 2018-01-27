@@ -1,9 +1,12 @@
 #include "Shader.h"
 #include <fstream>
 #include <string>
+#include "Exception.h"
 
 Shader::Shader(char* vertexShaderFilename, char* fragmentShaderFilename)
 {
+	checkIfNULL(vertexShaderFilename, "Path to vertex shader is NULL", EXCEPTION_THROW);
+	checkIfNULL(fragmentShaderFilename, "Path to the fragment shader is NULL", EXCEPTION_THROW);
 	_program = glCreateProgram(); // Creates a shader program
 
 	// Creates a vertex shader and a fragment shader
@@ -139,6 +142,7 @@ GLuint Shader::createShader(const std::string& shaderCode, GLenum shaderType)
 }
 std::string Shader::getShaderCode(char* filename)
 {
+	checkIfNULL(filename, "The path to the shader file is NULL", EXCEPTION_THROW);
 	std::ifstream file;
 	file.open(filename); // opens the file asked to by the parameter
 

@@ -1,5 +1,5 @@
 #include "Renderer.h"
-
+#include "Exception.h"
 
 
 Renderer::Renderer()
@@ -21,6 +21,7 @@ void Renderer::clearScreen()
 
 void Renderer::draw(std::vector<Entity*>* entities, StaticShader* shader)
 {
+	checkIfNULL(entities, "Can't draw a NULL list of entities", EXCEPTION_THROW);
 	// renders all of the entities
 	for (int i = 0; i < entities->size(); i++)
 	{

@@ -6,6 +6,7 @@
 #include <glfw3.h>
 #include <iostream>
 #include "Game.h"
+#include "Exception.h"
 
 //Update Rate
 #define Updates_Per_Second 60.0f
@@ -27,6 +28,9 @@ int main()
 	int monitorCount;
 	GLFWmonitor** monitors = glfwGetMonitors(&monitorCount); // Used for multimonitor setup
 	std::cout << "There are : " << monitorCount << " monitors.\n";
+
+	checkIfNULL(primary, "Can't get the primary monitor", EXCEPTION_THROW);
+	checkIfNULL(monitors, "Can't detect how many monitors there are", EXCEPTION_THROW);
 
 	//fullscreen settings
 	const GLFWvidmode* mode = glfwGetVideoMode(primary);

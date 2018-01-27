@@ -53,6 +53,10 @@ KeyboardHandler& KeyboardHandler::getKeyboard()
 void KeyboardHandler::destroyKeyboard()
 {
 	KeyboardHandler* keyboard = &getKeyboard();
+	if (keyboard == NULL)
+	{
+		return;
+	}
 	delete keyboard;
 	keyboard = NULL;
 }

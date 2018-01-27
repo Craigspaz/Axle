@@ -6,30 +6,23 @@
 
 int startsWithString(const char* a, const char* b)
 {
-	if (a == NULL || b == NULL)
-	{
-		throwNullPointerException("At parameter in StartWithString()", 0);
-	}
+	checkIfNULL(a, "At parameter 0 in StartWithString()", EXCEPTION_THROW);
+	checkIfNULL(b, "At parameter 1 in StartWithString()", EXCEPTION_THROW);
 	if (strncmp(a, b, strlen(b)) == 0) return 1;
 	return 0;
 }
 
 int indexOfChar(const char* a, char e)
 {
-	if (a == NULL)
-	{
-		throwNullPointerException("At parameter in IndexOFChar()", 0);
-	}
+	checkIfNULL(a, "At parameter 0 in IndexOFChar()", EXCEPTION_THROW);
 	return strchr(a, e) - a;
 }
 
 
 char* sub(const char* a, int start, int end)
 {
-	if (a == NULL)
-	{
-		throwNullPointerException("At parameter in Substring()", 0);
-	}
+	checkIfNULL(a, "At parameter 0 in Substring()", EXCEPTION_THROW);
+	
 	if (start > end)
 	{
 		int tmp = start;
@@ -46,10 +39,7 @@ char* sub(const char* a, int start, int end)
 	}
 
 	char* result = (char*)malloc((end - start + 1) * sizeof(char));
-	if (result == NULL)
-	{
-		throwNullPointerException("Malloc Returned Null in SUB()", 0);
-	}
+	checkIfNULL(result,"Malloc Returned Null in SUB()", EXCEPTION_THROW);
 	int counter = 0;
 	int i = start;
 	for (; i < end; i++)
@@ -63,10 +53,7 @@ char* sub(const char* a, int start, int end)
 
 char charAtIndex(const char* a, int index)
 {
-	if (a == NULL)
-	{
-		throwNullPointerException("At parameter in Char At Index()", 0);
-	}
+	checkIfNULL(a,"At parameter 0 in Char At Index()", EXCEPTION_THROW);
 	if (index < 0 || index > length(a))
 	{
 		throwIndexOutOfBoundsException(index, "At parameter in Char At Index()", 0);
@@ -77,10 +64,9 @@ char charAtIndex(const char* a, int index)
 
 int endsWithString(const char* a, const char* b)
 {
-	if (a == NULL || b == NULL)
-	{
-		throwNullPointerException("At parameter in Ends With String()", 0);
-	}
+	checkIfNULL(a, "At parameter 0 in Ends With String()", EXCEPTION_THROW);
+	checkIfNULL(b, "At parameter 1 in Ends With String()", EXCEPTION_THROW);
+
 	int i = length(a) - 1;
 	int lb = length(b) - 1;
 	int counter = 0;
@@ -96,10 +82,8 @@ int endsWithString(const char* a, const char* b)
 }
 int indexOfCharAfterIndex(const char* a, char e, int offset)
 {
-	if (a == NULL)
-	{
-		throwNullPointerException("At parameter in IndexOfCharAfterIndex()", 0);
-	}
+
+	checkIfNULL(a, "At parameter 0 in IndexOfCharAfterIndex()", EXCEPTION_THROW);
 
 	int len = length(a);
 	if (offset < 0 || offset > len)
@@ -118,25 +102,17 @@ int indexOfCharAfterIndex(const char* a, char e, int offset)
 }
 int length(const char* a)
 {
-	if (a == NULL)
-	{
-		throwNullPointerException("At parameter in Length()", 0);
-	}
+	checkIfNULL(a,"At parameter 0 in Length()", EXCEPTION_THROW);
 
 	return strlen(a) + 1;
 }
 
 char* trim(char* a)
 {
-	if (a == NULL)
-	{
-		throwNullPointerException("At parameter in Trim()", 0);
-	}
+	checkIfNULL(a, "At parameter 0 in Trim()", EXCEPTION_THROW);
+
 	char* result = (char*)malloc(length(a) * sizeof(char));
-	if (result == NULL)
-	{
-		throwNullPointerException("Malloc Returned Null in Trim()", 0);
-	}
+	checkIfNULL(result, "Malloc Returned Null in Trim()", EXCEPTION_THROW);
 
 	int i = 0;
 	int len = length(a) - 1;

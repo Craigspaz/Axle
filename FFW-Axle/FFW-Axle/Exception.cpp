@@ -16,7 +16,7 @@ int throwIndexOutOfBoundsException(int index, char* additionalDetails, char catc
 	return 0; // if this line runs this program has come back to life
 }
 
-int throwNullPointerException(char* additionalDetails, char catchException)
+void throwNullPointerException(char* additionalDetails, char catchException)
 {
 	if (additionalDetails == NULL)
 	{
@@ -25,8 +25,22 @@ int throwNullPointerException(char* additionalDetails, char catchException)
 	fprintf(stderr, "ERROR: NULLPointerException thrown: Details: %s\n", additionalDetails);
 	if (catchException == 1)
 	{
-		return EXCEPTION_NULLPOINTER;
+		return;
 	}
 	exit(-1);
-	return 0; // if this line runs this program has come back to life
+}
+
+
+int checkIfNULL(const void* value, char* message, char catchExceptionIfThrown)
+{
+	if (value == NULL)
+	{
+		throwNullPointerException(message, catchExceptionIfThrown);
+		if (catchExceptionIfThrown == 1)
+		{
+			return 1;
+		}
+		exit(-1);
+	}
+	return 0;
 }

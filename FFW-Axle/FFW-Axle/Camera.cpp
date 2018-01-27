@@ -1,5 +1,5 @@
 #include "Camera.h"
-
+#include "Exception.h"
 
 
 Camera::Camera(glm::vec3 position)
@@ -34,5 +34,6 @@ float Camera::getYaw()
 
 void Camera::move(InputHandler* handler)
 {
+	checkIfNULL(handler, "Null InputHandler passed to camera", EXCEPTION_THROW);
 	// TODO: Handle camera movement
 }
