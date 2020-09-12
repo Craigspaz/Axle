@@ -9,7 +9,7 @@
 class Alert: public UIElement
 {
     public:
-        Alert(std::string message, std::string confirmButtonText, std::string cancelButtonText, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
+        Alert(std::string message, std::string confirmButtonText, std::string cancelButtonText, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = false, bool disabled = false);
         ~Alert();
 
         void render();
