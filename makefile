@@ -1,34 +1,179 @@
 #DEBUG=-D
-SRCDIR=./src
-OBJDIR=./obj
-INCDIR=./include
-BINDIR=./bin
+SRCDIR=src
+OBJDIR=obj
+INCDIR=include
+BINDIR=bin
+
+INCENTITY=$(INCDIR)/Entity
+INCEVENTS=$(INCDIR)/Events
+INCLEVEL=$(INCDIR)/Level
+INCLIGHTS=$(INCDIR)/Lights
+INCUI=$(INCDIR)/Menu-UI
+INCPHYSICS=$(INCDIR)/Physics
+INCRENDERER=$(INCDIR)/Renderer
+INCSOUND=$(INCDIR)/Sound
+
+OBJDIRENTITY=$(OBJDIR)/Entity
+OBJDIREVENTS=$(OBJDIR)/Events
+OBJDIRLEVEL=$(OBJDIR)/Level
+OBJDIRLIGHTS=$(OBJDIR)/Lights
+OBJDIRUI=$(OBJDIR)/Menu-UI
+OBJDIRPHYSICS=$(OBJDIR)/Physics
+OBJDIRRENDERER=$(OBJDIR)/Renderer
+OBJDIRSOUND=$(OBJDIR)/Sound
+
+SRCENTITY=$(SRCDIR)/Entity
+SRCEVENTS=$(SRCDIR)/Events
+SRCLEVEL=$(SRCDIR)/Level
+SRCLIGHTS=$(SRCDIR)/Lights
+SRCUI=$(SRCDIR)/Menu-UI
+SRCPHYSICS=$(SRCDIR)/Physics
+SRCRENDERER=$(SRCDIR)/Renderer
+SRCSOUND=$(SRCDIR)/Sound
 
 CC=g++
 
-SRCS=$(SRCDIR)/main.cpp 
+SRCS=$(SRCDIR)/main.cpp \
+$(SRCDIR)/Util.cpp 
 
+SRCENTITYS=$(SRCENTITY)/Entity.cpp \
+$(SRCENTITY)/Mesh.cpp
 
-INCLUDE = $(addprefix -I,$(INCDIR))
+SRCEVENTSS=$(SRCEVENTS)/Controller.cpp \
+$(SRCEVENTS)/Keyboard.cpp \
+$(SRCEVENTS)/Mouse.cpp
+
+SRCLEVELS=$(SRCLEVEL)/Level.cpp
+
+SRCLIGHTSS=$(SRCLIGHTS)/AreaLight.cpp \
+$(SRCLIGHTS)/DirectionalLight.cpp \
+$(SRCLIGHTS)/Light.cpp \
+$(SRCLIGHTS)/PointLight.cpp \
+$(SRCLIGHTS)/SpotLight.cpp
+
+SRCUIS=$(SRCUI)/Alert.cpp \
+$(SRCUI)/Button.cpp \
+$(SRCUI)/CheckBox.cpp \
+$(SRCUI)/DropDown.cpp \
+$(SRCUI)/Image.cpp \
+$(SRCUI)/Label.cpp \
+$(SRCUI)/Layout.cpp \
+$(SRCUI)/ProgressBar.cpp \
+$(SRCUI)/RadioButton.cpp \
+$(SRCUI)/Screen.cpp \
+$(SRCUI)/Slider.cpp \
+$(SRCUI)/TextField.cpp \
+$(SRCUI)/UIElement.cpp \
+$(SRCUI)/Video.cpp
+
+SRCPHYSICSS=$(SRCPHYSICS)/BoxCollider.cpp \
+$(SRCPHYSICS)/CapsuleCollider.cpp \
+$(SRCPHYSICS)/Collider.cpp \
+$(SRCPHYSICS)/MeshCollider.cpp \
+$(SRCPHYSICS)/RigidBody.cpp \
+$(SRCPHYSICS)/SphereCollider.cpp
+
+SRCRENDERERS=$(SRCRENDERER)/Camera.cpp \
+$(SRCRENDERER)/Shader.cpp \
+$(SRCRENDERER)/Texture.cpp
+
+SRCSOUNDS=$(SRCSOUND)/Effect.cpp \
+$(SRCSOUND)/Music.cpp
+
+INCLUDE = $(addprefix -I,$(INCDIR)) $(addprefix -I,$(INCENTITY)) $(addprefix -I,$(INCEVENTS))  $(addprefix -I,$(INCLEVEL))  $(addprefix -I,$(INCLIGHTS))  $(addprefix -I,$(INCUI))  $(addprefix -I,$(INCPHYSICS))  $(addprefix -I,$(INCRENDERER))  $(addprefix -I,$(INCSOUND)) 
 OBJS=${SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o}
+OBJSENTITY=${SRCENTITYS:$(SRCENTITY)/%.cpp=$(OBJDIRENTITY)/%.o}
+OBJSEVENTS=${SRCEVENTSS:$(SRCEVENTS)/%.cpp=$(OBJDIREVENTS)/%.o}
+OBJSLEVEL=${SRCLEVELS:$(SRCLEVEL)/%.cpp=$(OBJDIRLEVEL)/%.o}
+OBJSLIGHTS=${SRCLIGHTSS:$(SRCLIGHTS)/%.cpp=$(OBJDIRLIGHTS)/%.o}
+OBJSUI=${SRCUIS:$(SRCUI)/%.cpp=$(OBJDIRUI)/%.o}
+OBJSPHYSICS=${SRCPHYSICSS:$(SRCPHYSICS)/%.cpp=$(OBJDIRPHYSICS)/%.o}
+OBJSRENDERER=${SRCRENDERERS:$(SRCRENDERER)/%.cpp=$(OBJDIRRENDERER)/%.o}
+OBJSSOUND=${SRCSOUNDS:$(SRCSOUND)/%.cpp=$(OBJDIRSOUND)/%.o}
 CFLAGS = $(INCLUDE) -g$(DEBUG) -lSDL2 -lGL -lGLEW
 
-TARGET = $(BINDIR)/Game
+TARGET = $(BINDIR)/Engine
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) -o $@ $(OBJS) ${CFLAGS}
+$(TARGET): $(OBJS) $(OBJSENTITY) $(OBJSEVENTS) $(OBJSLEVEL) $(OBJSLIGHTS) $(OBJSUI) $(OBJSPHYSICS) $(OBJSRENDERER) $(OBJSSOUND)
+	$(CC) -o $@ $(OBJS) $(OBJSENTITY) $(OBJSEVENTS) $(OBJSLEVEL) $(OBJSLIGHTS) $(OBJSUI) $(OBJSPHYSICS) $(OBJSRENDERER) $(OBJSSOUND) ${CFLAGS} 
 
 $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp $(BINDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BINDIR): $(OBJDIR)
+$(OBJSENTITY): $(OBJDIRENTITY)/%.o : $(SRCENTITY)/%.cpp $(OBJDIRENTITY)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJSEVENTS): $(OBJDIREVENTS)/%.o : $(SRCEVENTS)/%.cpp $(OBJDIREVENTS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJSLEVEL): $(OBJDIRLEVEL)/%.o : $(SRCLEVEL)/%.cpp $(OBJDIRLEVEL)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJSLIGHTS): $(OBJDIRLIGHTS)/%.o : $(SRCLIGHTS)/%.cpp $(OBJDIRLIGHTS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJSUI): $(OBJDIRUI)/%.o : $(SRCUI)/%.cpp $(OBJDIRUI)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJSPHYSICS): $(OBJDIRPHYSICS)/%.o : $(SRCPHYSICS)/%.cpp $(OBJDIRPHYSICS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJSRENDERER): $(OBJDIRRENDERER)/%.o : $(SRCRENDERER)/%.cpp $(OBJDIRRENDERER)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJSSOUND): $(OBJDIRSOUND)/%.o : $(SRCSOUND)/%.cpp $(OBJDIRSOUND)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BINDIR): $(OBJDIR) $(OBJDIRENTITY) $(OBJDIREVENTS) $(OBJDIRLEVEL) $(OBJDIRLIGHTS) $(OBJDIRUI) $(OBJDIRPHYSICS) $(OBJDIRRENDERER) $(OBJDIRSOUND)
 	mkdir -p $(BINDIR)
 
 $(OBJDIR): $(SRCDIR)
 	mkdir -p $(OBJDIR)
 
+$(OBJDIRENTITY): $(SRCENTITY)
+	mkdir -p $(OBJDIRENTITY)
+
+$(OBJDIREVENTS): $(SRCEVENTS)
+	mkdir -p $(OBJDIREVENTS)
+
+$(OBJDIRLEVEL): $(SRCLEVEL)
+	mkdir -p $(OBJDIRLEVEL)
+
+$(OBJDIRLIGHTS): $(SRCLIGHTS)
+	mkdir -p $(OBJDIRLIGHTS)
+
+$(OBJDIRUI): $(SRCUI)
+	mkdir -p $(OBJDIRUI)
+
+$(OBJDIRPHYSICS): $(SRCPHYSICS)
+	mkdir -p $(OBJDIRPHYSICS)
+
+$(OBJDIRRENDERER): $(SRCRENDERER)
+	mkdir -p $(OBJDIRRENDERER)
+
+$(OBJDIRSOUND): $(SRCSOUND)
+	mkdir -p $(OBJDIRSOUND)
+
 clean:
 	rm -f $(OBJS)
+	rm -f $(OBJSENTITY)
+	rm -f $(OBJSEVENTS)
+	rm -f $(OBJSLEVEL)
+	rm -f $(OBJSLIGHTS)
+	rm -f $(OBJSUI)
+	rm -f $(OBJSPHYSICS)
+	rm -f $(OBJSRENDERER)
+	rm -f $(OBJSSOUND)
+	rm -rf $(OBJDIRENTITY)
+	rm -rf $(OBJDIREVENTS)
+	rm -rf $(OBJDIRLEVEL)
+	rm -rf $(OBJDIRLIGHTS)
+	rm -rf $(OBJDIRUI)
+	rm -rf $(OBJDIRPHYSICS)
+	rm -rf $(OBJDIRRENDERER)
+	rm -rf $(OBJDIRSOUND)
+	rm -rf $(OBJDIR)
 	rm -f $(TARGET)
+	rm -rf $(BINDIR)

@@ -11,6 +11,6 @@ class Layout
 
     protected:
 
-}
+};
 
 #endif
