@@ -17,11 +17,17 @@ TARGET = $(BINDIR)/Game
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS) 
+$(TARGET): $(OBJS)
 	$(CC) -o $@ $(OBJS) ${CFLAGS}
 
-$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
+$(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp $(BINDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BINDIR): $(OBJDIR)
+	mkdir -p $(BINDIR)
+
+$(OBJDIR): $(SRCDIR)
+	mkdir -p $(OBJDIR)
 
 clean:
 	rm -f $(OBJS)
