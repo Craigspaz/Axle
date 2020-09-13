@@ -12,7 +12,7 @@ DropDown::~DropDown()
 
 void DropDown::render()
 {
-    
+
 }
 
 std::vector<std::string> DropDown::getOptions()
@@ -27,7 +27,14 @@ void DropDown::addOption(std::string option)
 
 void DropDown::removeOption(std::string option)
 {
-    // TODO
+    for(int i = 0; i < _options.size(); i++)
+    {
+        if(_options[i].compare(option) == 0)
+        {
+            _options.erase(_options.begin() + i);
+            break;
+        }
+    }
 }
 
 void DropDown::setOptions(std::vector<std::string> options)
