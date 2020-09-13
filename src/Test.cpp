@@ -1,4 +1,5 @@
 #include <iostream>
+#include <assert.h>
 #include "Menu-UI/Label.h"
 
 // Tests Getters and Setters
@@ -14,12 +15,14 @@ int Label_Test_001()
 
     if (testLabel.getText().compare(testText) != 0 || testLabel.getPosition() != testPosition || testLabel.getRotation() != testRotation || testLabel.getScale() != testScale || testLabel.isVisible() != testVisible || testLabel.isDisabled() != testDisabled)
     {
+        std::cerr << "Label_Test_001 failed with constructor values tested with getters and setters" << std::endl;
         return 0;
     }
 
     testLabel.setIsDisabled(false);
     if(testLabel.isDisabled() != false)
     {
+        std::cerr << "Label_Test_001 failed. The setIsDisabled setter and isDisabled getter did not match as expected" << std::endl;
         return 0;
     }
 
@@ -27,9 +30,11 @@ int Label_Test_001()
 
     if(testLabel.isVisible() != true)
     {
+        std::cerr << "Label_Test_001 failed. The setIsVisible setter and isVisible getter did not match as expected" << std::endl;
         return 0;
     }
 
+    std::cout << "Label_Test_001 Passed" << std::endl;
     return 1;
 }
 
