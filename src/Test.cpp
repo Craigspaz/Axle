@@ -34,6 +34,13 @@ int Label_Test_001()
         return 0;
     }
 
+    testLabel.setText("Hello World Again");
+    if(testLabel.getText().compare("Hello World Again") != 0)
+    {
+        std::cerr << "Label_Test_001 failed. The setText setter and getText getter did not match as expected" << std::endl;
+        return 0;
+    }
+
     std::cout << "Label_Test_001 Passed" << std::endl;
     return 1;
 }
