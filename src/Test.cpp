@@ -1,4 +1,37 @@
 #include <iostream>
+#include "Menu-UI/Label.h"
+
+// Tests Getters and Setters
+int Label_Test_001()
+{
+    std::string testText = "Hello World";
+    glm::vec3 testPosition(1,2,3);
+    glm::vec3 testRotation(4,5,6);
+    glm::vec3 testScale(7,8,9);
+    bool testVisible = false;
+    bool testDisabled = true;
+    Label testLabel(testText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    if (testLabel.getText().compare(testText) != 0 || testLabel.getPosition() != testPosition || testLabel.getRotation() != testRotation || testLabel.getScale() != testScale || testLabel.isVisible() != testVisible || testLabel.isDisabled() != testDisabled)
+    {
+        return 0;
+    }
+
+    testLabel.setIsDisabled(false);
+    if(testLabel.isDisabled() != false)
+    {
+        return 0;
+    }
+
+    testLabel.setIsVisible(true);
+
+    if(testLabel.isVisible() != true)
+    {
+        return 0;
+    }
+
+    return 1;
+}
 
 #if defined(_WIN32)
     #define PLATFORM_NAME "windows"
@@ -26,5 +59,11 @@
         std::cout << "You are currently running on an  unsupported platform!" << std::endl;
     }
 
-    // TODO: Do Stuff
+    int numberOfTests = 1;
+    int numberOfTestsPassed = 0;
+
+    numberOfTestsPassed += Label_Test_001();
+
+
+    std::cout << "Results: " << numberOfTestsPassed << "/" << numberOfTests << " Passed!" << std::endl;
 }
