@@ -1,16 +1,28 @@
 #ifndef __LAYOUT__
 #define __LAYOUT__
+#include "UIElement.h"
+#include <iostream>
+#include <string>
+#include <vector>
 
-class Layout
+class Layout : public UIElement
 {
-    public:
-        Layout();
-        ~Layout();
+public:
+    Layout(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
+    ~Layout();
 
-    private:
+    void render();
 
-    protected:
+    std::vector<UIElement *> getElements();
+    void addElement(UIElement *element);
+    void removeOption(UIElement *element);
 
+    bool operator==(const Layout *layout);
+
+private:
+    std::vector<UIElement *> _elements;
+
+protected:
 };
 
 #endif
