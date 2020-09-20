@@ -1,15 +1,19 @@
 #ifndef __IMAGE__
 #define __IMAGE__
+#include "UIElement.h"
+#include <iostream>
 
-class Image
+class Image : public UIElement
 {
-    public:
-        Image();
-        ~Image();
+public:
+    Image(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
+    ~Image();
 
-    private:
+    bool operator==(const Image *image);
+    bool operator!=(const Image *image);
 
-    protected:
+private:
+protected:
 };
 
 #endif

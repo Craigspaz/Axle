@@ -4,7 +4,7 @@ Alert::Alert(std::string message, std::string confirmButtonText, std::string can
     : UIElement(position, rotation, scale, visible, disabled)
 {
     // TODO: Update Position and Labels
-    _confirmButton = new Button(confirmButtonText, position, rotation,scale, visible, disabled);
+    _confirmButton = new Button(confirmButtonText, position, rotation, scale, visible, disabled);
     _cancelButton = new Button(cancelButtonText, position, rotation, scale, visible, disabled);
     _message = new Label(message, position, rotation, scale, visible, disabled);
 }
@@ -18,5 +18,14 @@ Alert::~Alert()
 
 void Alert::render()
 {
-    
+}
+
+bool Alert::operator==(const Alert *alert)
+{
+    return (this->_confirmButton == alert->_confirmButton && this->_cancelButton == alert->_cancelButton && this->_message == alert->_message) && ((UIElement *)this) == ((UIElement *)alert);
+}
+
+bool Alert::operator!=(const Alert *alert)
+{
+    return !(this == alert);
 }

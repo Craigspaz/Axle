@@ -1,15 +1,19 @@
 #ifndef __TEXTFIELD__
 #define __TEXTFIELD__
+#include "UIElement.h"
+#include <iostream>
 
-class TextField
+class TextField : public UIElement
 {
-    public:
-        TextField();
-        ~TextField();
+public:
+    TextField(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
+    ~TextField();
 
-    private:
+    bool operator==(const TextField *textField);
+    bool operator!=(const TextField *textField);
 
-    protected:
+private:
+protected:
 };
 
 #endif

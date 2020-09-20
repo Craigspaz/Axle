@@ -12,7 +12,6 @@ DropDown::~DropDown()
 
 void DropDown::render()
 {
-
 }
 
 std::vector<std::string> DropDown::getOptions()
@@ -27,9 +26,9 @@ void DropDown::addOption(std::string option)
 
 void DropDown::removeOption(std::string option)
 {
-    for(int i = 0; i < _options.size(); i++)
+    for (int i = 0; i < _options.size(); i++)
     {
-        if(_options[i].compare(option) == 0)
+        if (_options[i].compare(option) == 0)
         {
             _options.erase(_options.begin() + i);
             break;
@@ -40,4 +39,14 @@ void DropDown::removeOption(std::string option)
 void DropDown::setOptions(std::vector<std::string> options)
 {
     _options = options;
+}
+
+bool DropDown::operator==(const DropDown *dropDown)
+{
+    return (this->_options.size() == dropDown->_options.size() && ((UIElement *)this) == ((UIElement *)dropDown));
+}
+
+bool DropDown::operator!=(const DropDown *dropDown)
+{
+    return !(this == dropDown);
 }

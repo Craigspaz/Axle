@@ -37,5 +37,10 @@ void Layout::removeOption(UIElement *element)
 
 bool Layout::operator==(const Layout *layout)
 {
-    return (this->_position == layout->_position && this->_rotation == layout->_rotation && this->_scale == layout->_scale && this->_visible == layout->_visible && this->_disabled == layout->_disabled && this->_elements.size() == layout->_elements.size());
+    return (this->_elements.size() == layout->_elements.size() && ((UIElement *)this) == ((UIElement *)layout));
+}
+
+bool Layout::operator!=(const Layout *layout)
+{
+    return !(this == layout);
 }

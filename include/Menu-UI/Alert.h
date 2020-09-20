@@ -6,19 +6,23 @@
 #include <iostream>
 #include <string>
 
-class Alert: public UIElement
+class Alert : public UIElement
 {
-    public:
-        Alert(std::string message, std::string confirmButtonText, std::string cancelButtonText, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = false, bool disabled = false);
-        ~Alert();
+public:
+    Alert(std::string message, std::string confirmButtonText, std::string cancelButtonText, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = false, bool disabled = false);
+    ~Alert();
 
-        void render();
+    void render();
 
-    private:
-        Button* _confirmButton;
-        Button* _cancelButton;
-        Label* _message;
-    protected:
+    bool operator==(const Alert *alert);
+    bool operator!=(const Alert *alert);
+
+private:
+    Button *_confirmButton;
+    Button *_cancelButton;
+    Label *_message;
+
+protected:
 };
 
 #endif

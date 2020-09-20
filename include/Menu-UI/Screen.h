@@ -1,15 +1,19 @@
 #ifndef __SCREEN__
 #define __SCREEN__
+#include "UIElement.h"
+#include <iostream>
 
-class Screen
+class Screen : public UIElement
 {
-    public:
-        Screen();
-        ~Screen();
-    private:
+public:
+    Screen(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
+    ~Screen();
 
-    protected:
+    bool operator==(const Screen *screen);
+    bool operator!=(const Screen *screen);
+
+private:
+protected:
 };
-
 
 #endif
