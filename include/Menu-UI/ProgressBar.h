@@ -12,8 +12,8 @@ public:
     float getProgress();
     void setProgress(float progress);
 
-    bool operator==(const ProgressBar *progressBar);
-    bool operator!=(const ProgressBar *progressBar);
+    bool operator==(const ProgressBar &progressBar);
+    bool operator!=(const ProgressBar &progressBar);
 
 private:
     float _progress; // As Percent

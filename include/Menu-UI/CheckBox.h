@@ -14,8 +14,8 @@ public:
 
     bool isChecked();
     void setIsChecked(bool state);
-    bool operator==(const CheckBox *checkBox);
-    bool operator!=(const CheckBox *checkBox);
+    bool operator==(const CheckBox &checkBox);
+    bool operator!=(const CheckBox &checkBox);
 
 private:
     bool _currentState; // true is checked false is unchecked

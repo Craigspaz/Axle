@@ -20,12 +20,12 @@ void ProgressBar::setProgress(float progress)
     _progress = progress;
 }
 
-bool ProgressBar::operator==(const ProgressBar *progressBar)
+bool ProgressBar::operator==(const ProgressBar &progressBar)
 {
-    return (this->_progress == progressBar->_progress && ((UIElement *)this) == ((UIElement *)progressBar));
+    return (this->_progress == progressBar._progress && ((UIElement)(*this)) == ((UIElement)progressBar));
 }
 
-bool ProgressBar::operator!=(const ProgressBar *progressBar)
+bool ProgressBar::operator!=(const ProgressBar &progressBar)
 {
-    return !(this == progressBar);
+    return !((*this) == progressBar);
 }

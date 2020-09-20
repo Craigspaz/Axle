@@ -9,12 +9,12 @@ Video::~Video()
 {
 }
 
-bool Video::operator==(const Video *video)
+bool Video::operator==(const Video &video)
 {
-    return (((UIElement *)this) == ((UIElement *)video));
+    return (((UIElement)(*this)) == ((UIElement)video));
 }
 
-bool Video::operator!=(const Video *video)
+bool Video::operator!=(const Video &video)
 {
-    return !(this == video);
+    return !((*this) == video);
 }

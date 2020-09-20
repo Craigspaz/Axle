@@ -67,12 +67,12 @@ void UIElement::setIsDisabled(bool disabled)
     _disabled = disabled;
 }
 
-bool UIElement::operator==(const UIElement *uielement)
+bool UIElement::operator==(const UIElement &uielement)
 {
-    return (this->_position == uielement->_position && this->_rotation == uielement->_rotation && this->_scale == uielement->_scale && this->_visible == uielement->_visible && this->_disabled == uielement->_disabled);
+    return (this->_position == uielement._position && this->_rotation == uielement._rotation && this->_scale == uielement._scale && this->_visible == uielement._visible && this->_disabled == uielement._disabled);
 }
 
-bool UIElement::operator!=(const UIElement *uielement)
+bool UIElement::operator!=(const UIElement &uielement)
 {
-    return !(this == uielement);
+    return !((*this) == uielement);
 }

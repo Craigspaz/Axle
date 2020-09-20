@@ -41,12 +41,12 @@ void DropDown::setOptions(std::vector<std::string> options)
     _options = options;
 }
 
-bool DropDown::operator==(const DropDown *dropDown)
+bool DropDown::operator==(const DropDown &dropDown)
 {
-    return (this->_options.size() == dropDown->_options.size() && ((UIElement *)this) == ((UIElement *)dropDown));
+    return (this->_options.size() == dropDown._options.size() && ((UIElement)(*this)) == ((UIElement)dropDown));
 }
 
-bool DropDown::operator!=(const DropDown *dropDown)
+bool DropDown::operator!=(const DropDown &dropDown)
 {
-    return !(this == dropDown);
+    return !((*this) == dropDown);
 }

@@ -9,12 +9,12 @@ Slider::~Slider()
 {
 }
 
-bool Slider::operator==(const Slider *slider)
+bool Slider::operator==(const Slider &slider)
 {
-    return (((UIElement *)this) == ((UIElement *)slider));
+    return (((UIElement)(*this)) == ((UIElement)slider));
 }
 
-bool Slider::operator!=(const Slider *slider)
+bool Slider::operator!=(const Slider &slider)
 {
-    return !(this == slider);
+    return !((*this) == slider);
 }

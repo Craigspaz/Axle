@@ -23,12 +23,12 @@ void CheckBox::setIsChecked(bool state)
     _currentState = state;
 }
 
-bool CheckBox::operator==(const CheckBox *checkBox)
+bool CheckBox::operator==(const CheckBox &checkBox)
 {
-    return (this->_currentState == checkBox->_currentState && ((UIElement *)this) == ((UIElement *)checkBox));
+    return (this->_currentState == checkBox._currentState && ((UIElement)(*this)) == ((UIElement)checkBox));
 }
 
-bool CheckBox::operator!=(const CheckBox *checkBox)
+bool CheckBox::operator!=(const CheckBox &checkBox)
 {
-    return !(this == checkBox);
+    return !((*this) == checkBox);
 }

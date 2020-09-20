@@ -20,12 +20,12 @@ void Alert::render()
 {
 }
 
-bool Alert::operator==(const Alert *alert)
+bool Alert::operator==(const Alert &alert)
 {
-    return (this->_confirmButton == alert->_confirmButton && this->_cancelButton == alert->_cancelButton && this->_message == alert->_message) && ((UIElement *)this) == ((UIElement *)alert);
+    return (this->_confirmButton == alert._confirmButton && this->_cancelButton == alert._cancelButton && this->_message == alert._message) && ((UIElement)(*this)) == ((UIElement)alert);
 }
 
-bool Alert::operator!=(const Alert *alert)
+bool Alert::operator!=(const Alert &alert)
 {
-    return !(this == alert);
+    return !((*this) == alert);
 }

@@ -14,8 +14,8 @@ public:
 
     std::string getText();
     void setText(std::string text);
-    bool operator==(const Label *label);
-    bool operator!=(const Label *label);
+    bool operator==(const Label &label);
+    bool operator!=(const Label &label);
 
 private:
     std::string _text;

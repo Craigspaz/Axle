@@ -9,12 +9,12 @@ RadioButton::~RadioButton()
 {
 }
 
-bool RadioButton::operator==(const RadioButton *radioButton)
+bool RadioButton::operator==(const RadioButton &radioButton)
 {
-    return (((UIElement *)this) == ((UIElement *)radioButton));
+    return (((UIElement)(*this)) == ((UIElement)radioButton));
 }
 
-bool RadioButton::operator!=(const RadioButton *radioButton)
+bool RadioButton::operator!=(const RadioButton &radioButton)
 {
-    return !(this == radioButton);
+    return !((*this) == radioButton);
 }

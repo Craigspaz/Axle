@@ -14,8 +14,8 @@ public:
 
     void render();
 
-    bool operator==(const Alert *alert);
-    bool operator!=(const Alert *alert);
+    bool operator==(const Alert &alert);
+    bool operator!=(const Alert &alert);
 
 private:
     Button *_confirmButton;

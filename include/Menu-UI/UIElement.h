@@ -8,7 +8,7 @@ public:
     UIElement(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
     virtual ~UIElement();
 
-    virtual void render() = 0;
+    virtual void render();
 
     glm::vec3 getPosition();
     glm::vec3 getScale();
@@ -21,8 +21,8 @@ public:
     void setIsVisible(bool visible);
     void setIsDisabled(bool disabled);
 
-    bool operator==(const UIElement *uielement);
-    bool operator!=(const UIElement *uielement);
+    bool operator==(const UIElement &uielement);
+    bool operator!=(const UIElement &uielement);
 
 private:
 protected:

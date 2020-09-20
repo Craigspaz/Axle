@@ -17,8 +17,8 @@ public:
     void addElement(UIElement *element);
     void removeOption(UIElement *element);
 
-    bool operator==(const Layout *layout);
-    bool operator!=(const Layout *layout);
+    bool operator==(const Layout &layout);
+    bool operator!=(const Layout &layout);
 
 private:
     std::vector<UIElement *> _elements;

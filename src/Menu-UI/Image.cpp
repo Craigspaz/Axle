@@ -9,12 +9,12 @@ Image::~Image()
 {
 }
 
-bool Image::operator==(const Image *image)
+bool Image::operator==(const Image &image)
 {
-    return (((UIElement *)this) == ((UIElement *)image));
+    return (((UIElement)(*this)) == ((UIElement)image));
 }
 
-bool Image::operator!=(const Image *image)
+bool Image::operator!=(const Image &image)
 {
-    return !(this == image);
+    return !((*this) == image);
 }

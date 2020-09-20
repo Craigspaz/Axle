@@ -9,12 +9,12 @@ TextField::~TextField()
 {
 }
 
-bool TextField::operator==(const TextField *textField)
+bool TextField::operator==(const TextField &textField)
 {
-    return (((UIElement *)this) == ((UIElement *)textField));
+    return (((UIElement)(*this)) == ((UIElement)textField));
 }
 
-bool TextField::operator!=(const TextField *textField)
+bool TextField::operator!=(const TextField &textField)
 {
-    return !(this == textField);
+    return !((*this) == textField);
 }

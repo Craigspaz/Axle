@@ -9,8 +9,8 @@ public:
     Image(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
     ~Image();
 
-    bool operator==(const Image *image);
-    bool operator!=(const Image *image);
+    bool operator==(const Image &image);
+    bool operator!=(const Image &image);
 
 private:
 protected:

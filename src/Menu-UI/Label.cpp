@@ -24,12 +24,12 @@ void Label::setText(std::string text)
     _text = text;
 }
 
-bool Label::operator==(const Label *label)
+bool Label::operator==(const Label &label)
 {
-    return (this->_text == label->_text && ((UIElement *)this) == ((UIElement *)label));
+    return (this->_text == label._text && ((UIElement)(*this)) == ((UIElement)label));
 }
 
-bool Label::operator!=(const Label *label)
+bool Label::operator!=(const Label &label)
 {
-    return !(this == label);
+    return !((*this) == label);
 }

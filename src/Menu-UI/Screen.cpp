@@ -9,12 +9,12 @@ Screen::~Screen()
 {
 }
 
-bool Screen::operator==(const Screen *screen)
+bool Screen::operator==(const Screen &screen)
 {
-    return (((UIElement *)this) == ((UIElement *)screen));
+    return (((UIElement)(*this)) == ((UIElement)screen));
 }
 
-bool Screen::operator!=(const Screen *screen)
+bool Screen::operator!=(const Screen &screen)
 {
-    return !(this == screen);
+    return !((*this) == screen);
 }
