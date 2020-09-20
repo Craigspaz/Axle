@@ -14,6 +14,9 @@ public:
 
     void press();
 
+    std::string getText();
+    void setText(std::string text);
+
     bool operator==(const Button &button);
     bool operator!=(const Button &button);
 

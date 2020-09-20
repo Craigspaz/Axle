@@ -18,6 +18,16 @@ void Button::press()
 {
 }
 
+std::string Button::getText()
+{
+  return _text;
+}
+
+void Button::setText(std::string text)
+{
+  _text = text;
+}
+
 bool Button::operator==(const Button &button)
 {
   return (this->_text == button._text && ((UIElement)(*this)) == ((UIElement)button));

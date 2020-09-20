@@ -1,8 +1,9 @@
 #include <iostream>
 #include <assert.h>
 #include "Menu-UI/Label.h"
+#include "Menu-UI/Button.h"
 
-// Tests Getters and Setters
+// Tests Label Getters and Setters
 int Label_Test_001()
 {
     std::string testText = "Hello World";
@@ -68,7 +69,7 @@ int Label_Test_002()
     }
     else
     {
-        std::cerr << "Label does not equal itself!" << std::endl;
+        std::cerr << "Label_Test_002 failed. Label does not equal itself!" << std::endl;
         return 0;
     }
 
@@ -77,19 +78,19 @@ int Label_Test_002()
     }
     else
     {
-        std::cerr << "Label does not equal label with same details!" << std::endl;
+        std::cerr << "Label_Test_002 failed. Label does not equal label with same details!" << std::endl;
         return 0;
     }
 
     if (testLabel == testLabel3)
     {
-        std::cerr << "Labels with different text were found to match!" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different text were found to match!" << std::endl;
         return 0;
     }
 
     if (testLabel == testLabel4)
     {
-        std::cerr << "Labels with different position were found to match" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different position were found to match" << std::endl;
         return 0;
     }
 
@@ -98,7 +99,7 @@ int Label_Test_002()
     }
     else
     {
-        std::cerr << "Labels with different position objects but same values did not match" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different position objects but same values did not match" << std::endl;
         return 0;
     }
 
@@ -126,13 +127,13 @@ int Label_Test_003()
 
     if (testLabel != testLabel)
     {
-        std::cerr << "Label did not equal itself" << std::endl;
+        std::cerr << "Label_Test_003 failed. Label did not equal itself" << std::endl;
         return 0;
     }
 
     if (testLabel != testLabel2)
     {
-        std::cerr << "Labels that are equal were found to be different" << std::endl;
+        std::cerr << "Label_Test_003 failed. Labels that are equal were found to be different" << std::endl;
         return 0;
     }
 
@@ -141,7 +142,7 @@ int Label_Test_003()
     }
     else
     {
-        std::cerr << "Labels with different text were found to be equal" << std::endl;
+        std::cerr << "Label_Test_003 failed. Labels with different text were found to be equal" << std::endl;
         return 0;
     }
 
@@ -150,17 +151,87 @@ int Label_Test_003()
     }
     else
     {
-        std::cerr << "Labels with different position were found to be equal" << std::endl;
+        std::cerr << "Label_Test_003 failed. Labels with different position were found to be equal" << std::endl;
         return 0;
     }
 
     if (testLabel != testLabel5)
     {
-        std::cerr << "Labels with different position objects were found to be different" << std::endl;
+        std::cerr << "Label_Test_003 failed. Labels with different position objects were found to be different" << std::endl;
         return 0;
     }
 
     std::cout << "Label_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Button Getters and Setters
+int Button_Test_001()
+{
+    std::string testText = "Hello World";
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Button button(testText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    if (button.getText().compare(testText) != 0 || button.getPosition() != testPosition || button.getRotation() != testRotation || button.getScale() != testScale || button.isVisible() != testVisible || button.isDisabled() != testDisabled)
+    {
+        std::cerr << "Button_Test_001 failed with constructor values tested with getters and setters" << std::endl;
+        return 0;
+    }
+
+    testText = "Hello World!";
+    button.setText(testText);
+    if (button.getText().compare("Hello World!") != 0)
+    {
+        std::cerr << "Button_Test_001 failed with setText" << std::endl;
+        return 0;
+    }
+
+    glm::vec3 testPosition2(1, 2, 4);
+    button.setPosition(testPosition2);
+    if (button.getPosition() == testPosition)
+    {
+        std::cerr << "Button_Test_001 failed. setPosition failed" << std::endl;
+        return 0;
+    }
+
+    glm::vec3 testRotation2(4, 5, 7);
+    button.setRotation(testRotation2);
+    if (button.getRotation() == testRotation)
+    {
+        std::cerr << "Button_Test_001 failed. setRotation failed" << std::endl;
+        return 0;
+    }
+
+    glm::vec3 testScale2(7, 8, 10);
+    button.setScale(testScale2);
+    if (button.getScale() == testScale)
+    {
+        std::cerr << "Button_Test_001 failed. setScale failed" << std::endl;
+        return 0;
+    }
+
+    bool testVisible2 = true;
+    button.setIsVisible(testVisible2);
+    if (button.isVisible() == testVisible)
+    {
+        std::cerr << "Button_Test_001 failed. setIsVisible failed" << std::endl;
+        return 0;
+    }
+
+    bool testDisabled2 = false;
+    button.setIsDisabled(testDisabled2);
+    if (button.isDisabled() == testDisabled)
+    {
+        std::cerr << "Button_Test_001 failed. setIsDisabled failed" << std::endl;
+        return 0;
+    }
+
+    std::cout << "Button_Test_001 Passed" << std::endl;
     return 1;
 }
 
@@ -190,12 +261,14 @@ int main()
         std::cout << "You are currently running on an  unsupported platform!" << std::endl;
     }
 
-    int numberOfTests = 3;
+    int numberOfTests = 4;
     int numberOfTestsPassed = 0;
 
     numberOfTestsPassed += Label_Test_001();
     numberOfTestsPassed += Label_Test_002();
     numberOfTestsPassed += Label_Test_003();
+
+    numberOfTestsPassed += Button_Test_001();
 
     std::cout << "Results: " << numberOfTestsPassed << "/" << numberOfTests << " Passed!" << std::endl;
 }
