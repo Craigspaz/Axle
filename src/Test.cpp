@@ -1,7 +1,10 @@
 #include <iostream>
 #include <assert.h>
+#include <glm/ext.hpp>
+#include <glm/gtx/string_cast.hpp>
 #include "Menu-UI/Label.h"
 #include "Menu-UI/Button.h"
+#include "Menu-UI/Alert.h"
 
 // Tests Label Getters and Setters
 int Label_Test_001()
@@ -15,9 +18,46 @@ int Label_Test_001()
     Label testLabel(testText, testPosition, testRotation, testScale, testVisible, testDisabled);
 
     // Tests constructor input and getters
-    if (testLabel.getText().compare(testText) != 0 || testLabel.getPosition() != testPosition || testLabel.getRotation() != testRotation || testLabel.getScale() != testScale || testLabel.isVisible() != testVisible || testLabel.isDisabled() != testDisabled)
+
+    // Tests the getText() getter and constructor
+    if (testLabel.getText().compare(testText) != 0)
     {
-        std::cerr << "Label_Test_001 failed with constructor values tested with getters and setters" << std::endl;
+        std::cerr << "Label_Test_001 Failed. getText did not match text put into constructor. Expected: " << testText << ". Got: " << testLabel.getText() << std::endl;
+        return 0;
+    }
+
+    // Tests the getPosition() getter and constructor
+    if (testLabel.getPosition() != testPosition)
+    {
+        std::cerr << "Label_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testLabel.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (testLabel.getRotation() != testRotation)
+    {
+        std::cerr << "Label_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testLabel.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (testLabel.getScale() != testScale)
+    {
+        std::cerr << "Label_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testLabel.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (testLabel.isVisible() != testVisible)
+    {
+        std::cerr << "Label_Test_001 Failed. isVisible did not match scale put into constructor. Expected: " << testVisible << ". Got: " << testLabel.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (testLabel.isDisabled() != testDisabled)
+    {
+        std::cerr << "Label_Test_001 Failed. isDisabled did not match scale put into constructor. Expected: " << testDisabled << ". Got: " << testLabel.isDisabled() << std::endl;
         return 0;
     }
 
@@ -25,7 +65,7 @@ int Label_Test_001()
     testLabel.setIsDisabled(false);
     if (testLabel.isDisabled() != false)
     {
-        std::cerr << "Label_Test_001 failed. The setIsDisabled setter and isDisabled getter did not match as expected" << std::endl;
+        std::cerr << "Label_Test_001 failed. The setIsDisabled setter and isDisabled getter did not match. Expected: " << false << ". Got: " << testLabel.isDisabled() << std::endl;
         return 0;
     }
 
@@ -33,7 +73,7 @@ int Label_Test_001()
     testLabel.setIsVisible(true);
     if (testLabel.isVisible() != true)
     {
-        std::cerr << "Label_Test_001 failed. The setIsVisible setter and isVisible getter did not match as expected" << std::endl;
+        std::cerr << "Label_Test_001 failed. The setIsVisible setter and isVisible getter did not match. Expected: " << true << ". Got: " << testLabel.isVisible() << std::endl;
         return 0;
     }
 
@@ -41,7 +81,9 @@ int Label_Test_001()
     testLabel.setText("Hello World Again");
     if (testLabel.getText().compare("Hello World Again") != 0)
     {
-        std::cerr << "Label_Test_001 failed. The setText setter and getText getter did not match as expected" << std::endl;
+        std::cerr << "Label_Test_001 failed. The setText setter and getText getter did not match. Expected: "
+                  << "Hello World Again"
+                  << ". Got: " << testLabel.getText() << std::endl;
         return 0;
     }
 
@@ -83,7 +125,7 @@ int Label_Test_002()
     }
     else
     {
-        std::cerr << "Label_Test_002 failed. Label does not equal itself!" << std::endl;
+        std::cerr << "Label_Test_002 failed. Label does not equal itself!. Expected them to equal but they did not" << std::endl;
         return 0;
     }
 
@@ -93,21 +135,21 @@ int Label_Test_002()
     }
     else
     {
-        std::cerr << "Label_Test_002 failed. Label does not equal label with same details!" << std::endl;
+        std::cerr << "Label_Test_002 failed. Label does not equal label with same details! Expected them to equal but they did not" << std::endl;
         return 0;
     }
 
     // Tests labels with different text don't equal
     if (testLabel == testLabel3)
     {
-        std::cerr << "Label_Test_002 failed. Labels with different text were found to match!" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different text were found to match! Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests labels with different positions don't equal
     if (testLabel == testLabel4)
     {
-        std::cerr << "Label_Test_002 failed. Labels with different position were found to match" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different position were found to match. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
@@ -117,35 +159,35 @@ int Label_Test_002()
     }
     else
     {
-        std::cerr << "Label_Test_002 failed. Labels with different position objects but same values did not match" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different position objects but same values did not match. Expected them to equal but they did not" << std::endl;
         return 0;
     }
 
     // Tests labels with different rotations equal if their rotations are the same
     if (testLabel == testLabel6)
     {
-        std::cerr << "Label_Test_002 failed. Labels with different rotations were found to be equal" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different rotations were found to be equal. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests labels with different scales equal if their scales are the same
     if (testLabel == testLabel7)
     {
-        std::cerr << "Label_Test_002 failed. Labels with different scales were found to be equal" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different scales were found to be equal. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests labels with different visibility equal if their visibility is the same
     if (testLabel == testLabel8)
     {
-        std::cerr << "Label_Test_002 failed. Labels with different visibilities were found to be equal" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different visibilities were found to be equal. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests labels with different disabled states equal if their disabled state are the same
     if (testLabel == testLabel9)
     {
-        std::cerr << "Label_Test_002 failed. Labels with different disabled states were found to be equal" << std::endl;
+        std::cerr << "Label_Test_002 failed. Labels with different disabled states were found to be equal. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
@@ -174,14 +216,14 @@ int Label_Test_003()
     // Tests labels to confirm labels should equal themselves
     if (testLabel != testLabel)
     {
-        std::cerr << "Label_Test_003 failed. Label did not equal itself" << std::endl;
+        std::cerr << "Label_Test_003 failed. Label did not equal itself. Expected them to equal but they did not" << std::endl;
         return 0;
     }
 
     // Tests labels to confirm equal labels are found to be equal
     if (testLabel != testLabel2)
     {
-        std::cerr << "Label_Test_003 failed. Labels that are equal were found to be different" << std::endl;
+        std::cerr << "Label_Test_003 failed. Labels that are equal were found to be different. Expected them to equal but they did not" << std::endl;
         return 0;
     }
 
@@ -191,7 +233,7 @@ int Label_Test_003()
     }
     else
     {
-        std::cerr << "Label_Test_003 failed. Labels with different text were found to be equal" << std::endl;
+        std::cerr << "Label_Test_003 failed. Labels with different text were found to be equal. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
@@ -212,9 +254,46 @@ int Button_Test_001()
     Button button(testText, testPosition, testRotation, testScale, testVisible, testDisabled);
 
     // Tests if Button constructor and getters work as intented
-    if (button.getText().compare(testText) != 0 || button.getPosition() != testPosition || button.getRotation() != testRotation || button.getScale() != testScale || button.isVisible() != testVisible || button.isDisabled() != testDisabled)
+
+    // Tests the getText() getter and constructor
+    if (button.getText().compare(testText) != 0)
     {
-        std::cerr << "Button_Test_001 failed with constructor values tested with getters and setters" << std::endl;
+        std::cerr << "Button_Test_001 Failed. getText did not match text put into constructor. Expected: " << testText << ". Got: " << button.getText() << std::endl;
+        return 0;
+    }
+
+    // Tests the getPosition() getter and constructor
+    if (button.getPosition() != testPosition)
+    {
+        std::cerr << "Button_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(button.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (button.getRotation() != testRotation)
+    {
+        std::cerr << "Button_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(button.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (button.getScale() != testScale)
+    {
+        std::cerr << "Button_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(button.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (button.isVisible() != testVisible)
+    {
+        std::cerr << "Button_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << button.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (button.isDisabled() != testDisabled)
+    {
+        std::cerr << "Button_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << button.isDisabled() << std::endl;
         return 0;
     }
 
@@ -223,7 +302,7 @@ int Button_Test_001()
     button.setText(testText);
     if (button.getText().compare("Hello World!") != 0)
     {
-        std::cerr << "Button_Test_001 failed with setText" << std::endl;
+        std::cerr << "Button_Test_001 failed with setText. Expected: " << "Hello World!" << ". Got: " << button.getText() << std::endl;
         return 0;
     }
 
@@ -232,7 +311,7 @@ int Button_Test_001()
     button.setPosition(testPosition2);
     if (button.getPosition() == testPosition)
     {
-        std::cerr << "Button_Test_001 failed. setPosition failed" << std::endl;
+        std::cerr << "Button_Test_001 failed. setPosition failed. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(button.getPosition()) << std::endl;
         return 0;
     }
 
@@ -241,7 +320,7 @@ int Button_Test_001()
     button.setRotation(testRotation2);
     if (button.getRotation() == testRotation)
     {
-        std::cerr << "Button_Test_001 failed. setRotation failed" << std::endl;
+        std::cerr << "Button_Test_001 failed. setRotation failed. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(button.getRotation()) << std::endl;
         return 0;
     }
 
@@ -250,7 +329,7 @@ int Button_Test_001()
     button.setScale(testScale2);
     if (button.getScale() == testScale)
     {
-        std::cerr << "Button_Test_001 failed. setScale failed" << std::endl;
+        std::cerr << "Button_Test_001 failed. setScale failed. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(button.getScale()) << std::endl;
         return 0;
     }
 
@@ -259,7 +338,7 @@ int Button_Test_001()
     button.setIsVisible(testVisible2);
     if (button.isVisible() == testVisible)
     {
-        std::cerr << "Button_Test_001 failed. setIsVisible failed" << std::endl;
+        std::cerr << "Button_Test_001 failed. setIsVisible failed. Expected: " << testVisible << ". Got: " << button.isVisible() << std::endl;
         return 0;
     }
 
@@ -268,7 +347,7 @@ int Button_Test_001()
     button.setIsDisabled(testDisabled2);
     if (button.isDisabled() == testDisabled)
     {
-        std::cerr << "Button_Test_001 failed. setIsDisabled failed" << std::endl;
+        std::cerr << "Button_Test_001 failed. setIsDisabled failed. Expected: " << testDisabled << ". Got: " << button.isDisabled() << std::endl;
         return 0;
     }
 
@@ -311,7 +390,7 @@ int Button_Test_002()
     }
     else
     {
-        std::cerr << "Button_Test_002 failed. Button is not equal to itself" << std::endl;
+        std::cerr << "Button_Test_002 failed. Button is not equal to itself. Expected them to equal but they did not" << std::endl;
         return 0;
     }
 
@@ -321,49 +400,49 @@ int Button_Test_002()
     }
     else
     {
-        std::cerr << "Button_Test_002 failed. Button is not equal to button with same values" << std::endl;
+        std::cerr << "Button_Test_002 failed. Button is not equal to button with same values. Expected them to equal but they did not" << std::endl;
         return 0;
     }
 
     // Tests if button is equal to button with different text
     if (testButton == testButton3)
     {
-        std::cerr << "Button_Test_002 failed. Button is equal but it has different text" << std::endl;
+        std::cerr << "Button_Test_002 failed. Button is equal but it has different text. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests if button is equal to button with different positions
     if (testButton == testButton4)
     {
-        std::cerr << "Button_Test_002 failed. Button is equal but has different positions" << std::endl;
+        std::cerr << "Button_Test_002 failed. Button is equal but has different positions. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests if button is equal to button with different rotations
     if (testButton == testButton5)
     {
-        std::cerr << "Button_Test_002 failed. Button is equal but has different rotations" << std::endl;
+        std::cerr << "Button_Test_002 failed. Button is equal but has different rotations. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests if button is equal to button with different scales
     if (testButton == testButton6)
     {
-        std::cerr << "Button_Test_002 failed. Button is equal but has different scales" << std::endl;
+        std::cerr << "Button_Test_002 failed. Button is equal but has different scales. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests if button is equal to button with different visibilities
     if (testButton == testButton7)
     {
-        std::cerr << "Button_Test_002 failed. Button is equal but has different visibilities" << std::endl;
+        std::cerr << "Button_Test_002 failed. Button is equal but has different visibilities. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
     // Tests if button is equal to button with different disabled states
     if (testButton == testButton8)
     {
-        std::cerr << "Button_Test_002 failed. Button is equal but has different disabled state" << std::endl;
+        std::cerr << "Button_Test_002 failed. Button is equal but has different disabled state. Expected them to not equal but they did" << std::endl;
         return 0;
     }
 
@@ -371,13 +450,189 @@ int Button_Test_002()
     return 1;
 }
 
-// Tests Button Operator !=
+// Tests Button Operator != (Note this is the inverse of the == so doing minimal tests)
 int Button_Test_003()
 {
-    // TODO: Implement not equals tests
+    std::string testText = "Hello World";
+    std::string testText2 = "Hello World!";
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
 
-    
+    Button testButton(testText, testPosition, testRotation, testScale, testVisible, testDisabled);
+    Button testButton2(testText2, testPosition, testRotation, testScale, testVisible, testDisabled);
+    Button testButton3(testText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests if button is equal to itself
+    if (testButton != testButton)
+    {
+        std::cerr << "Button_Test_003 failed. Button did not equal itself. Expected them to equal but they did not" << std::endl;
+        return 0;
+    }
+
+    // Tests if buttons with different text equal
+    if (testButton != testButton2)
+    {
+    }
+    else
+    {
+        std::cerr << "Button_Test_003 failed. Buttons that have different text equal. Expected them to equal but they did not" << std::endl;
+        return 0;
+    }
+
+    // Tests if buttons with same values but different objects differ
+    if (testButton != testButton3)
+    {
+        std::cerr << "Button_Test_003 failed. Buttons with the same values but different objects differ. Expected them to equal but they did not" << std::endl;
+        return 0;
+    }
+
     std::cout << "Button_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Alert Getters and Setters
+int Alert_Test_001()
+{
+    std::string message = "Test Message";
+    std::string confirmButtonText = "Confirm";
+    std::string cancelButtonText = "Cancel";
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Alert testAlert(message, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests the getPosition() getter and constructor
+    if (testAlert.getPosition() != testPosition)
+    {
+        std::cerr << "Alert_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testAlert.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (testAlert.getRotation() != testRotation)
+    {
+        std::cerr << "Alert_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testAlert.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (testAlert.getScale() != testScale)
+    {
+        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testAlert.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (testAlert.isVisible() != testVisible)
+    {
+        std::cerr << "Alert_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testAlert.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (testAlert.isDisabled() != testDisabled)
+    {
+        std::cerr << "Alert_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testAlert.isDisabled() << std::endl;
+        return 0;
+    }
+
+    // Tests confirm button
+    if (testAlert.getConfirmButton()->getText().compare(confirmButtonText) != 0)
+    {
+        std::cerr << "Alert_Test_001 failed. Confirm button text did not match. Expected: " << confirmButtonText << ". Got: " << testAlert.getConfirmButton()->getText() << std::endl;
+        return 0;
+    }
+
+    // Tests cancel button
+    if (testAlert.getCancelButton()->getText().compare(cancelButtonText) != 0)
+    {
+        std::cerr << "Alert_Test_001 failed. Cancel button text did not match. Expected: " << cancelButtonText << ". Got: " << testAlert.getCancelButton()->getText() << std::endl;
+        return 0;
+    }
+
+    // Tests label
+    if (testAlert.getMessage()->getText().compare(message) != 0)
+    {
+        std::cerr << "Alert_Test_001 failed. Label text does not match. Expected: " << message << ". Got: " << testAlert.getMessage()->getText() << std::endl;
+        return 0;
+    }
+
+    // Tests message text getter
+    if (testAlert.getMessageText().compare(message) != 0)
+    {
+        std::cerr << "Alert_Test_001 failed. Label text getter does not match. Expected: " << message << ". Got: " << testAlert.getMessageText() << std::endl;
+        return 0;
+    }
+
+    // Tests message setter
+    testAlert.setMessage("Hello World!");
+    if (testAlert.getMessageText().compare("Hello World!") != 0)
+    {
+        std::cerr << "Alert_Test_001 failed. Setter did not set the message text as expected. Expected: " << "Hello World!" << ". Got: " << testAlert.getMessageText() << std::endl;
+        return 0;
+    }
+
+    // Tests setPosition
+    glm::vec3 testPosition2(1, 2, 4);
+    testAlert.setPosition(testPosition2);
+    if (testAlert.getPosition() != testPosition2)
+    {
+        std::cerr << "Alert_Test_001 failed. setPosition did not set the position as exepected. Expected: " << glm::to_string(testPosition2) << ". Got: " << glm::to_string(testAlert.getPosition()) << std::endl;
+        return 0;
+    }
+
+    glm::vec3 testRotation2(4, 15, 6);
+    testAlert.setRotation(testRotation2);
+    if (testAlert.getRotation() != testRotation2)
+    {
+        std::cerr << "Alert_Test_001 failed. setRotation did not set the rotation as expected. Expected: " << glm::to_string(testRotation2) << ". Got: " << glm::to_string(testAlert.getRotation()) << std::endl;
+        return 0;
+    }
+
+    glm::vec3 testScale2(17, 8, 9);
+    testAlert.setScale(testScale2);
+    if (testAlert.getScale() != testScale2)
+    {
+        std::cerr << "Alert_Test_001 failed. setScale did not set the scale as expected. Expected: " << glm::to_string(testScale2) << ". Got: " << glm::to_string(testAlert.getScale()) << std::endl;
+        return 0;
+    }
+
+    bool testVisible2 = true;
+    testAlert.setIsVisible(testVisible2);
+    if (testAlert.isVisible() != testVisible2)
+    {
+        std::cerr << "Alert_Test_001 failed. setIsVisible did not set the visibility as expected. Expected: " << testVisible2 << ". Got: " << testAlert.isVisible() << std::endl;
+        return 0;
+    }
+
+    bool testDisabled2 = false;
+    testAlert.setIsDisabled(testDisabled2);
+    if (testAlert.isDisabled() != testDisabled2)
+    {
+        std::cerr << "Alert_Test_001 failed. setIsDisabled did not set the disabled state as expected. Expected: " << testDisabled2 << ". Got: " << testAlert.isDisabled() << std::endl;
+        return 0;
+    }
+
+    return 1;
+}
+
+// Tests Alert Operator ==
+int Alert_Test_002()
+{
+
+    return 1;
+}
+
+// Tests Alert Operator != (Note this is the inverse of the == so doing minimal tests)
+int Alert_Test_003()
+{
+
     return 1;
 }
 
@@ -407,7 +662,7 @@ int main()
         std::cout << "You are currently running on an  unsupported platform!" << std::endl;
     }
 
-    int numberOfTests = 6;
+    int numberOfTests = 9;
     int numberOfTestsPassed = 0;
 
     numberOfTestsPassed += Label_Test_001();
@@ -418,5 +673,16 @@ int main()
     numberOfTestsPassed += Button_Test_002();
     numberOfTestsPassed += Button_Test_003();
 
-    std::cout << "Results: " << numberOfTestsPassed << "/" << numberOfTests << " Passed!" << std::endl;
+    numberOfTestsPassed += Alert_Test_001();
+    numberOfTestsPassed += Alert_Test_002();
+    numberOfTestsPassed += Alert_Test_003();
+
+    if (numberOfTestsPassed == numberOfTests)
+    {
+        std::cout << "Results: " << numberOfTestsPassed << "/" << numberOfTests << " Passed!" << std::endl;
+    }
+    else
+    {
+        std::cerr << "Results: " << numberOfTestsPassed << "/" << numberOfTests << " Passed!" << std::endl;
+    }
 }

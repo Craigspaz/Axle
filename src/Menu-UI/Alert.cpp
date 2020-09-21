@@ -20,6 +20,31 @@ void Alert::render()
 {
 }
 
+Button* Alert::getConfirmButton()
+{
+    return _confirmButton;
+}
+
+Button* Alert::getCancelButton()
+{
+    return _cancelButton;
+}
+
+Label* Alert::getMessage()
+{
+    return _message;
+}
+
+std::string Alert::getMessageText()
+{
+    return _message->getText();
+}
+
+void Alert::setMessage(std::string message)
+{
+    _message->setText(message);
+}
+
 bool Alert::operator==(const Alert &alert)
 {
     return (this->_confirmButton == alert._confirmButton && this->_cancelButton == alert._cancelButton && this->_message == alert._message) && ((UIElement)(*this)) == ((UIElement)alert);

@@ -14,6 +14,12 @@ public:
 
     void render();
 
+    Button *getConfirmButton();
+    Button *getCancelButton();
+    Label *getMessage();
+    std::string getMessageText();
+    void setMessage(std::string message);
+
     bool operator==(const Alert &alert);
     bool operator!=(const Alert &alert);
 
