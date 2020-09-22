@@ -9,6 +9,11 @@ TextField::~TextField()
 {
 }
 
+UIElement TextField::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool TextField::operator==(const TextField &textField)
 {
     return (((UIElement)(*this)) == ((UIElement)textField));

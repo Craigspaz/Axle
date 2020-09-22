@@ -41,6 +41,11 @@ void DropDown::setOptions(std::vector<std::string> options)
     _options = options;
 }
 
+UIElement DropDown::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool DropDown::operator==(const DropDown &dropDown)
 {
     return (this->_options.size() == dropDown._options.size() && ((UIElement)(*this)) == ((UIElement)dropDown));

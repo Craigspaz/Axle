@@ -9,6 +9,11 @@ Screen::~Screen()
 {
 }
 
+UIElement Screen::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool Screen::operator==(const Screen &screen)
 {
     return (((UIElement)(*this)) == ((UIElement)screen));

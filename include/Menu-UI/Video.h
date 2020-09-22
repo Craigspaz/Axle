@@ -9,6 +9,7 @@ public:
     Video(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
     ~Video();
 
+    UIElement toParentObject() const;
     bool operator==(const Video &video);
     bool operator!=(const Video &video);
 

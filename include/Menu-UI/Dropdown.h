@@ -17,6 +17,7 @@ public:
     void addOption(std::string option);
     void removeOption(std::string option);
     void setOptions(std::vector<std::string> options);
+    UIElement toParentObject() const;
     bool operator==(const DropDown &dropDown);
     bool operator!=(const DropDown &dropDown);
 

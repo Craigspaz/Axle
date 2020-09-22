@@ -20,6 +20,11 @@ void ProgressBar::setProgress(float progress)
     _progress = progress;
 }
 
+UIElement ProgressBar::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool ProgressBar::operator==(const ProgressBar &progressBar)
 {
     return (this->_progress == progressBar._progress && ((UIElement)(*this)) == ((UIElement)progressBar));

@@ -12,6 +12,7 @@ public:
     float getProgress();
     void setProgress(float progress);
 
+    UIElement toParentObject() const;
     bool operator==(const ProgressBar &progressBar);
     bool operator!=(const ProgressBar &progressBar);
 

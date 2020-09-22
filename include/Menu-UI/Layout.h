@@ -17,6 +17,7 @@ public:
     void addElement(UIElement *element);
     void removeOption(UIElement *element);
 
+    UIElement toParentObject() const;
     bool operator==(const Layout &layout);
     bool operator!=(const Layout &layout);
 

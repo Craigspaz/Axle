@@ -28,6 +28,11 @@ void Button::setText(std::string text)
   _text = text;
 }
 
+UIElement Button::toParentObject() const
+{
+  return ((UIElement)(*this));
+}
+
 bool Button::operator==(const Button &button)
 {
   return (this->_text == button._text && ((UIElement)(*this)) == ((UIElement)button));

@@ -9,6 +9,11 @@ RadioButton::~RadioButton()
 {
 }
 
+UIElement RadioButton::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool RadioButton::operator==(const RadioButton &radioButton)
 {
     return (((UIElement)(*this)) == ((UIElement)radioButton));

@@ -20,17 +20,17 @@ void Alert::render()
 {
 }
 
-Button* Alert::getConfirmButton()
+Button *Alert::getConfirmButton()
 {
     return _confirmButton;
 }
 
-Button* Alert::getCancelButton()
+Button *Alert::getCancelButton()
 {
     return _cancelButton;
 }
 
-Label* Alert::getMessage()
+Label *Alert::getMessage()
 {
     return _message;
 }
@@ -45,9 +45,14 @@ void Alert::setMessage(std::string message)
     _message->setText(message);
 }
 
+UIElement Alert::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool Alert::operator==(const Alert &alert)
 {
-    return (this->_confirmButton == alert._confirmButton && this->_cancelButton == alert._cancelButton && this->_message == alert._message) && ((UIElement)(*this)) == ((UIElement)alert);
+    return (*(this->_confirmButton) == *(alert._confirmButton) && *(this->_cancelButton) == *(alert._cancelButton) && *(this->_message) == *(alert._message) && this->toParentObject() == alert.toParentObject());
 }
 
 bool Alert::operator!=(const Alert &alert)

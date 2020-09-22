@@ -14,6 +14,7 @@ public:
 
     bool isChecked();
     void setIsChecked(bool state);
+    UIElement toParentObject() const;
     bool operator==(const CheckBox &checkBox);
     bool operator!=(const CheckBox &checkBox);
 

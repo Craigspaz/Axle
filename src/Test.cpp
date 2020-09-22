@@ -302,7 +302,9 @@ int Button_Test_001()
     button.setText(testText);
     if (button.getText().compare("Hello World!") != 0)
     {
-        std::cerr << "Button_Test_001 failed with setText. Expected: " << "Hello World!" << ". Got: " << button.getText() << std::endl;
+        std::cerr << "Button_Test_001 failed with setText. Expected: "
+                  << "Hello World!"
+                  << ". Got: " << button.getText() << std::endl;
         return 0;
     }
 
@@ -574,7 +576,9 @@ int Alert_Test_001()
     testAlert.setMessage("Hello World!");
     if (testAlert.getMessageText().compare("Hello World!") != 0)
     {
-        std::cerr << "Alert_Test_001 failed. Setter did not set the message text as expected. Expected: " << "Hello World!" << ". Got: " << testAlert.getMessageText() << std::endl;
+        std::cerr << "Alert_Test_001 failed. Setter did not set the message text as expected. Expected: "
+                  << "Hello World!"
+                  << ". Got: " << testAlert.getMessageText() << std::endl;
         return 0;
     }
 
@@ -625,6 +629,107 @@ int Alert_Test_001()
 // Tests Alert Operator ==
 int Alert_Test_002()
 {
+    std::string message = "Test Message";
+    std::string confirmButtonText = "Confirm";
+    std::string cancelButtonText = "Cancel";
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Alert testAlert(message, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled);
+    Alert testAlert1(message, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    std::string message2 = "Test Message2";
+    Alert testAlert2(message2, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    std::string confirmButtonText2 = "Confirm2";
+    Alert testAlert3(message, confirmButtonText2, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    std::string cancelButtonText2 = "Cancel2";
+    Alert testAlert4(message, confirmButtonText, cancelButtonText2, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(1, 2, 4);
+    Alert testAlert5(message, confirmButtonText, cancelButtonText, testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testRotation2(4, 2, 6);
+    Alert testAlert6(message, confirmButtonText, cancelButtonText, testPosition, testRotation2, testScale, testVisible, testDisabled);
+
+    glm::vec3 testScale2(7, 28, 9);
+    Alert testAlert7(message, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale2, testVisible, testDisabled);
+
+    bool testVisible2 = true;
+    Alert testAlert8(message, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible2, testDisabled);
+
+    bool testDisabled2 = false;
+    Alert testAlert9(message, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled2);
+
+    if (testAlert == testAlert)
+    {
+    }
+    else
+    {
+        std::cerr << "Alert_Test_002 failed. Alert did not equal itself" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert1)
+    {
+    }
+    else
+    {
+        std::cerr << "Alert_Test_002 failed. Alert did not equal an alert with same values but different object" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert2)
+    {
+        std::cerr << "Alert_Test_002 failed. Alert equaled alert with different message" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert3)
+    {
+        std::cerr << "Alert_Test_002 failed. Alert equaled alert with different confirm button" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert4)
+    {
+        std::cerr << "Alert_Test_002 failed. Alert equaled alert with different cancel button" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert5)
+    {
+        std::cerr << "Alert_Test_002 failed. Alert equaled alert with different positions" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert6)
+    {
+        std::cerr << "Alert_Test_002 failed. Alert equaled alert with different rotations" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert7)
+    {
+        std::cerr << "Alert_Test_002 failed. Alert equaled alert with different scales" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert8)
+    {
+        std::cerr << "Alert_Test_002 failed. Alert equaled alert with different visibilities" << std::endl;
+        return 0;
+    }
+
+    if (testAlert == testAlert9)
+    {
+        std::cerr << "Alert_Test_002 failed. Alert equaled alert with different disabled states" << std::endl;
+        return 0;
+    }
 
     return 1;
 }

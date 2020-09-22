@@ -20,6 +20,8 @@ public:
     std::string getMessageText();
     void setMessage(std::string message);
 
+    UIElement toParentObject() const;
+
     bool operator==(const Alert &alert);
     bool operator!=(const Alert &alert);
 

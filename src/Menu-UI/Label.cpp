@@ -24,6 +24,11 @@ void Label::setText(std::string text)
     _text = text;
 }
 
+UIElement Label::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool Label::operator==(const Label &label)
 {
     return (this->_text == label._text && ((UIElement)(*this)) == ((UIElement)label));

@@ -9,6 +9,11 @@ Video::~Video()
 {
 }
 
+UIElement Video::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool Video::operator==(const Video &video)
 {
     return (((UIElement)(*this)) == ((UIElement)video));

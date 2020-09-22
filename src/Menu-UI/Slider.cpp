@@ -9,6 +9,11 @@ Slider::~Slider()
 {
 }
 
+UIElement Slider::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool Slider::operator==(const Slider &slider)
 {
     return (((UIElement)(*this)) == ((UIElement)slider));

@@ -9,6 +9,11 @@ Image::~Image()
 {
 }
 
+UIElement Image::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool Image::operator==(const Image &image)
 {
     return (((UIElement)(*this)) == ((UIElement)image));

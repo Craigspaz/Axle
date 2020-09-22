@@ -23,6 +23,11 @@ void CheckBox::setIsChecked(bool state)
     _currentState = state;
 }
 
+UIElement CheckBox::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool CheckBox::operator==(const CheckBox &checkBox)
 {
     return (this->_currentState == checkBox._currentState && ((UIElement)(*this)) == ((UIElement)checkBox));

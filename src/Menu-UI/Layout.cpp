@@ -35,6 +35,11 @@ void Layout::removeOption(UIElement *element)
     }
 }
 
+UIElement Layout::toParentObject() const
+{
+    return ((UIElement)(*this));
+}
+
 bool Layout::operator==(const Layout &layout)
 {
     return (this->_elements.size() == layout._elements.size() && ((UIElement)(*this)) == ((UIElement)layout));
