@@ -623,6 +623,7 @@ int Alert_Test_001()
         return 0;
     }
 
+    std::cout << "Alert_Test_001 Passed" << std::endl;
     return 1;
 }
 
@@ -665,6 +666,7 @@ int Alert_Test_002()
     bool testDisabled2 = false;
     Alert testAlert9(message, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled2);
 
+    // Tests if alert is equal to itself
     if (testAlert == testAlert)
     {
     }
@@ -674,6 +676,7 @@ int Alert_Test_002()
         return 0;
     }
 
+    // Tests if an alert is equal to an alert with the same values but different object
     if (testAlert == testAlert1)
     {
     }
@@ -683,61 +686,101 @@ int Alert_Test_002()
         return 0;
     }
 
+    // Tests if alerts with different messages are equal
     if (testAlert == testAlert2)
     {
         std::cerr << "Alert_Test_002 failed. Alert equaled alert with different message" << std::endl;
         return 0;
     }
 
+    // Tests if alerts with different confirm buttons are equal
     if (testAlert == testAlert3)
     {
         std::cerr << "Alert_Test_002 failed. Alert equaled alert with different confirm button" << std::endl;
         return 0;
     }
 
+    // Tests if alerts with different cancel buttons are equal
     if (testAlert == testAlert4)
     {
         std::cerr << "Alert_Test_002 failed. Alert equaled alert with different cancel button" << std::endl;
         return 0;
     }
 
+    // Tests if alerts with different positions are equal
     if (testAlert == testAlert5)
     {
         std::cerr << "Alert_Test_002 failed. Alert equaled alert with different positions" << std::endl;
         return 0;
     }
 
+    // Tests if alerts with different rotations are equal
     if (testAlert == testAlert6)
     {
         std::cerr << "Alert_Test_002 failed. Alert equaled alert with different rotations" << std::endl;
         return 0;
     }
 
+    // Tests if alerts with different scales are equal
     if (testAlert == testAlert7)
     {
         std::cerr << "Alert_Test_002 failed. Alert equaled alert with different scales" << std::endl;
         return 0;
     }
 
+    // Tests if alerts with different visibilities are equal
     if (testAlert == testAlert8)
     {
         std::cerr << "Alert_Test_002 failed. Alert equaled alert with different visibilities" << std::endl;
         return 0;
     }
 
+    // Tests if alerts with different disabled states are equal
     if (testAlert == testAlert9)
     {
         std::cerr << "Alert_Test_002 failed. Alert equaled alert with different disabled states" << std::endl;
         return 0;
     }
 
+    std::cout << "Alert_Test_002 Passed" << std::endl;
     return 1;
 }
 
 // Tests Alert Operator != (Note this is the inverse of the == so doing minimal tests)
 int Alert_Test_003()
 {
+    std::string message = "Test Message";
+    std::string confirmButtonText = "Confirm";
+    std::string cancelButtonText = "Cancel";
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
 
+    Alert testAlert(message, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    std::string message2 = "Test Message2";
+    Alert testAlert2(message2, confirmButtonText, cancelButtonText, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests if alert is not equal to itself
+    if (testAlert != testAlert)
+    {
+        std::cerr << "Alert_Test_003 failed. Alert was found to be not equal to itself" << std::endl;
+        return 0;
+    }
+
+    // Tests if alert is not equal to an alert with a different message
+    if (testAlert != testAlert2)
+    {
+    }
+    else
+    {
+        std::cerr << "Alert_Test_003 failed. Alert was found to be equal to an alert with a different message" << std::endl;
+        return 0;
+    }
+
+    std::cout << "Alert_Test_003 Passed" << std::endl;
     return 1;
 }
 
