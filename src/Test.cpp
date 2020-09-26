@@ -6,6 +6,15 @@
 #include "Menu-UI/Button.h"
 #include "Menu-UI/Alert.h"
 #include "Menu-UI/CheckBox.h"
+#include "Menu-UI/Dropdown.h"
+#include "Menu-UI/Image.h"
+#include "Menu-UI/Layout.h"
+#include "Menu-UI/ProgressBar.h"
+#include "Menu-UI/RadioButton.h"
+#include "Menu-UI/Screen.h"
+#include "Menu-UI/Slider.h"
+#include "Menu-UI/TextField.h"
+#include "Menu-UI/Video.h"
 
 // Tests Label Getters and Setters
 int Label_Test_001()
@@ -963,6 +972,246 @@ int CheckBox_Test_003()
     return 1;
 }
 
+// Tests DropDown Getters and Setters
+int DropDown_Test_001()
+{
+
+    std::cout << "DropDown_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests DropDown Operator ==
+int DropDown_Test_002()
+{
+
+    std::cout << "DropDown_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests DropDown Operator !=
+int DropDown_Test_003()
+{
+
+    std::cout << "DropDown_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Image Getters and Setters
+int Image_Test_001()
+{
+
+    std::cout << "Image_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Image Operator ==
+int Image_Test_002()
+{
+
+    std::cout << "Image_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Image Operator !=
+int Image_Test_003()
+{
+
+    std::cout << "Image_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Layout Getters and Setters
+int Layout_Test_001()
+{
+
+    std::cout << "Layout_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Layout Operator ==
+int Layout_Test_002()
+{
+
+    std::cout << "Layout_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Layout Operator !=
+int Layout_Test_003()
+{
+
+    std::cout << "Layout_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests ProgressBar Getters and Setters
+int ProgressBar_Test_001()
+{
+
+    std::cout << "ProgressBar_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests ProgressBar Operator ==
+int ProgressBar_Test_002()
+{
+
+    std::cout << "ProgressBar_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests ProgressBar Operator !=
+int ProgressBar_Test_003()
+{
+
+    std::cout << "ProgressBar_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests RadioButton Getters and Setters
+int RadioButton_Test_001()
+{
+
+    std::cout << "RadioButton_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests RadioButton Operator ==
+int RadioButton_Test_002()
+{
+
+    std::cout << "RadioButton_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests RadioButton Operator !=
+int RadioButton_Test_003()
+{
+
+    std::cout << "RadioButton_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Screen Getters and Setters
+int Screen_Test_001()
+{
+
+    std::cout << "Screen_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Screen Operator ==
+int Screen_Test_002()
+{
+
+    std::cout << "Screen_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Screen Operator !=
+int Screen_Test_003()
+{
+
+    std::cout << "Screen_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Slider Getters and Setters
+int Slider_Test_001()
+{
+
+    std::cout << "Slider_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Slider Operator ==
+int Slider_Test_002()
+{
+
+    std::cout << "Slider_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Slider Operator !=
+int Slider_Test_003()
+{
+
+    std::cout << "Slider_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests TextField Getters and Setters
+int TextField_Test_001()
+{
+
+    std::cout << "TextField_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests TextField Operator ==
+int TextField_Test_002()
+{
+
+    std::cout << "TextField_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests TextField Operator !=
+int TextField_Test_003()
+{
+
+    std::cout << "TextField_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Video Getters and Setters
+int Video_Test_001()
+{
+
+    std::cout << "Video_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Video Operator ==
+int Video_Test_002()
+{
+
+    std::cout << "Video_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests Video Operator !=
+int Video_Test_003()
+{
+
+    std::cout << "Video_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests UIElement Getters and Setters
+int UIElement_Test_001()
+{
+
+    std::cout << "UIElement_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests UIElement Operator ==
+int UIElement_Test_002()
+{
+
+    std::cout << "UIElement_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests UIElement Operator !=
+int UIElement_Test_003()
+{
+
+    std::cout << "UIElement_Test_003 Passed" << std::endl;
+    return 1;
+}
+
 #if defined(_WIN32)
 #define PLATFORM_NAME "windows"
 int WinMain()
@@ -989,7 +1238,7 @@ int main()
         std::cout << "You are currently running on an  unsupported platform!" << std::endl;
     }
 
-    int numberOfTests = 12;
+    int numberOfTests = 42;
     int numberOfTestsPassed = 0;
 
     numberOfTestsPassed += Label_Test_001();
@@ -1007,6 +1256,46 @@ int main()
     numberOfTestsPassed += CheckBox_Test_001();
     numberOfTestsPassed += CheckBox_Test_002();
     numberOfTestsPassed += CheckBox_Test_003();
+
+    numberOfTestsPassed += DropDown_Test_001();
+    numberOfTestsPassed += DropDown_Test_002();
+    numberOfTestsPassed += DropDown_Test_003();
+
+    numberOfTestsPassed += Image_Test_001();
+    numberOfTestsPassed += Image_Test_002();
+    numberOfTestsPassed += Image_Test_003();
+
+    numberOfTestsPassed += Layout_Test_001();
+    numberOfTestsPassed += Layout_Test_002();
+    numberOfTestsPassed += Layout_Test_003();
+
+    numberOfTestsPassed += ProgressBar_Test_001();
+    numberOfTestsPassed += ProgressBar_Test_002();
+    numberOfTestsPassed += ProgressBar_Test_003();
+
+    numberOfTestsPassed += RadioButton_Test_001();
+    numberOfTestsPassed += RadioButton_Test_002();
+    numberOfTestsPassed += RadioButton_Test_003();
+
+    numberOfTestsPassed += Screen_Test_001();
+    numberOfTestsPassed += Screen_Test_002();
+    numberOfTestsPassed += Screen_Test_003();
+
+    numberOfTestsPassed += Slider_Test_001();
+    numberOfTestsPassed += Slider_Test_002();
+    numberOfTestsPassed += Slider_Test_003();
+
+    numberOfTestsPassed += TextField_Test_001();
+    numberOfTestsPassed += TextField_Test_002();
+    numberOfTestsPassed += TextField_Test_003();
+
+    numberOfTestsPassed += Video_Test_001();
+    numberOfTestsPassed += Video_Test_002();
+    numberOfTestsPassed += Video_Test_003();
+
+    numberOfTestsPassed += UIElement_Test_001();
+    numberOfTestsPassed += UIElement_Test_002();
+    numberOfTestsPassed += UIElement_Test_003();
 
     if (numberOfTestsPassed == numberOfTests)
     {
