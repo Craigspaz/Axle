@@ -16,7 +16,7 @@ UIElement Slider::toParentObject() const
 
 bool Slider::operator==(const Slider &slider)
 {
-    return (((UIElement)(*this)) == ((UIElement)slider));
+    return (this->toParentObject() == slider.toParentObject());
 }
 
 bool Slider::operator!=(const Slider &slider)

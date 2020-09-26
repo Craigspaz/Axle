@@ -35,7 +35,7 @@ UIElement Button::toParentObject() const
 
 bool Button::operator==(const Button &button)
 {
-  return (this->_text == button._text && ((UIElement)(*this)) == ((UIElement)button));
+  return (this->_text == button._text && this->toParentObject() == button.toParentObject());
 }
 
 bool Button::operator!=(const Button &button)

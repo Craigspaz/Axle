@@ -42,7 +42,7 @@ UIElement Layout::toParentObject() const
 
 bool Layout::operator==(const Layout &layout)
 {
-    return (this->_elements.size() == layout._elements.size() && ((UIElement)(*this)) == ((UIElement)layout));
+    return (this->_elements.size() == layout._elements.size() && this->toParentObject() == layout.toParentObject());
 }
 
 bool Layout::operator!=(const Layout &layout)

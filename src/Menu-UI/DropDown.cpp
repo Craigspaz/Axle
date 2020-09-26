@@ -48,7 +48,7 @@ UIElement DropDown::toParentObject() const
 
 bool DropDown::operator==(const DropDown &dropDown)
 {
-    return (this->_options.size() == dropDown._options.size() && ((UIElement)(*this)) == ((UIElement)dropDown));
+    return (this->_options.size() == dropDown._options.size() && this->toParentObject() == dropDown.toParentObject());
 }
 
 bool DropDown::operator!=(const DropDown &dropDown)

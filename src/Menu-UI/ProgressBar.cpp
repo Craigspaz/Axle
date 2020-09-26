@@ -27,7 +27,7 @@ UIElement ProgressBar::toParentObject() const
 
 bool ProgressBar::operator==(const ProgressBar &progressBar)
 {
-    return (this->_progress == progressBar._progress && ((UIElement)(*this)) == ((UIElement)progressBar));
+    return (this->_progress == progressBar._progress && this->toParentObject() == progressBar.toParentObject());
 }
 
 bool ProgressBar::operator!=(const ProgressBar &progressBar)

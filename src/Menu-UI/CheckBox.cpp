@@ -30,7 +30,7 @@ UIElement CheckBox::toParentObject() const
 
 bool CheckBox::operator==(const CheckBox &checkBox)
 {
-    return (this->_currentState == checkBox._currentState && ((UIElement)(*this)) == ((UIElement)checkBox));
+    return (this->_currentState == checkBox._currentState && this->toParentObject() == checkBox.toParentObject());
 }
 
 bool CheckBox::operator!=(const CheckBox &checkBox)

@@ -16,7 +16,7 @@ UIElement TextField::toParentObject() const
 
 bool TextField::operator==(const TextField &textField)
 {
-    return (((UIElement)(*this)) == ((UIElement)textField));
+    return (this->toParentObject() == textField.toParentObject());
 }
 
 bool TextField::operator!=(const TextField &textField)

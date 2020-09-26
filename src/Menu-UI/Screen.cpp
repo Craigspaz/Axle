@@ -16,7 +16,7 @@ UIElement Screen::toParentObject() const
 
 bool Screen::operator==(const Screen &screen)
 {
-    return (((UIElement)(*this)) == ((UIElement)screen));
+    return (this->toParentObject() == screen.toParentObject());
 }
 
 bool Screen::operator!=(const Screen &screen)

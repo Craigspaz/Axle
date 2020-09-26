@@ -16,7 +16,7 @@ UIElement RadioButton::toParentObject() const
 
 bool RadioButton::operator==(const RadioButton &radioButton)
 {
-    return (((UIElement)(*this)) == ((UIElement)radioButton));
+    return (this->toParentObject() == radioButton.toParentObject());
 }
 
 bool RadioButton::operator!=(const RadioButton &radioButton)

@@ -16,7 +16,7 @@ UIElement Image::toParentObject() const
 
 bool Image::operator==(const Image &image)
 {
-    return (((UIElement)(*this)) == ((UIElement)image));
+    return (this->toParentObject() == image.toParentObject());
 }
 
 bool Image::operator!=(const Image &image)

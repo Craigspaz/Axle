@@ -5,6 +5,7 @@
 #include "Menu-UI/Label.h"
 #include "Menu-UI/Button.h"
 #include "Menu-UI/Alert.h"
+#include "Menu-UI/CheckBox.h"
 
 // Tests Label Getters and Setters
 int Label_Test_001()
@@ -784,6 +785,184 @@ int Alert_Test_003()
     return 1;
 }
 
+// Tests CheckBox Getters and Setters
+int CheckBox_Test_001()
+{
+    bool currentState = false;
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+    CheckBox testCheckBox(currentState, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    // Test getter for if the checkbox is checked
+    if (testCheckBox.isChecked())
+    {
+        std::cerr << "CheckBox_Test_001 failed. CheckBox was expected to be false but was true" << std::endl;
+        return 0;
+    }
+
+    // Tests the getPosition() getter and constructor
+    if (testCheckBox.getPosition() != testPosition)
+    {
+        std::cerr << "Alert_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testCheckBox.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (testCheckBox.getRotation() != testRotation)
+    {
+        std::cerr << "Alert_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testCheckBox.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (testCheckBox.getScale() != testScale)
+    {
+        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testCheckBox.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (testCheckBox.isVisible() != testVisible)
+    {
+        std::cerr << "Alert_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testCheckBox.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (testCheckBox.isDisabled() != testDisabled)
+    {
+        std::cerr << "Alert_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testCheckBox.isDisabled() << std::endl;
+        return 0;
+    }
+
+    std::cout << "CheckBox_Test_001 Passed" << std::endl;
+    return 1;
+}
+
+// Tests CheckBox Operator ==
+int CheckBox_Test_002()
+{
+    bool currentState = false;
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+    CheckBox testCheckBox(currentState, testPosition, testRotation, testScale, testVisible, testDisabled);
+    CheckBox testCheckBox2(currentState, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    bool currentState2 = true;
+    CheckBox testCheckBox3(currentState2, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(1, 12, 3);
+    CheckBox testCheckBox4(currentState, testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testRotation2(14, 5, 6);
+    CheckBox testCheckBox5(currentState, testPosition, testRotation2, testScale, testVisible, testDisabled);
+
+    glm::vec3 testScale2(7, 18, 9);
+    CheckBox testCheckBox6(currentState, testPosition, testRotation, testScale2, testVisible, testDisabled);
+
+    bool testVisible2 = true;
+    CheckBox testCheckBox7(currentState, testPosition, testRotation, testScale, testVisible2, testDisabled);
+
+    bool testDisabled2 = false;
+    CheckBox testCheckBox8(currentState, testPosition, testRotation, testScale, testVisible, testDisabled2);
+
+    if (testCheckBox == testCheckBox)
+    {
+    }
+    else
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was not equal to itself" << std::endl;
+        return 0;
+    }
+
+    if (testCheckBox == testCheckBox2)
+    {
+    }
+    else
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was not equal to another checkbox with the same details" << std::endl;
+        return 0;
+    }
+
+    if (testCheckBox == testCheckBox3)
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different state" << std::endl;
+        return 0;
+    }
+
+    if (testCheckBox == testCheckBox4)
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different position" << std::endl;
+        return 0;
+    }
+
+    if (testCheckBox == testCheckBox5)
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different rotation" << std::endl;
+        return 0;
+    }
+
+    if (testCheckBox == testCheckBox6)
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different scale" << std::endl;
+        return 0;
+    }
+
+    if (testCheckBox == testCheckBox7)
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different visibility" << std::endl;
+        return 0;
+    }
+
+    if (testCheckBox == testCheckBox8)
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different disabled state" << std::endl;
+        return 0;
+    }
+
+    std::cout << "CheckBox_Test_002 Passed" << std::endl;
+    return 1;
+}
+
+// Tests CheckBox Operator !=
+int CheckBox_Test_003()
+{
+    bool currentState = false;
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+    CheckBox testCheckBox(currentState, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    bool currentState2 = true;
+    CheckBox testCheckBox2(currentState2, testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    if (testCheckBox != testCheckBox)
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was not equal to itself" << std::endl;
+        return 0;
+    }
+
+    if (testCheckBox != testCheckBox2)
+    {
+    }
+    else
+    {
+        std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to checkbox with a different state" << std::endl;
+        return 0;
+    }
+
+    std::cout << "CheckBox_Test_003 Passed" << std::endl;
+    return 1;
+}
+
 #if defined(_WIN32)
 #define PLATFORM_NAME "windows"
 int WinMain()
@@ -810,7 +989,7 @@ int main()
         std::cout << "You are currently running on an  unsupported platform!" << std::endl;
     }
 
-    int numberOfTests = 9;
+    int numberOfTests = 12;
     int numberOfTestsPassed = 0;
 
     numberOfTestsPassed += Label_Test_001();
@@ -824,6 +1003,10 @@ int main()
     numberOfTestsPassed += Alert_Test_001();
     numberOfTestsPassed += Alert_Test_002();
     numberOfTestsPassed += Alert_Test_003();
+
+    numberOfTestsPassed += CheckBox_Test_001();
+    numberOfTestsPassed += CheckBox_Test_002();
+    numberOfTestsPassed += CheckBox_Test_003();
 
     if (numberOfTestsPassed == numberOfTests)
     {

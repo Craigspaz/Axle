@@ -16,7 +16,7 @@ UIElement Video::toParentObject() const
 
 bool Video::operator==(const Video &video)
 {
-    return (((UIElement)(*this)) == ((UIElement)video));
+    return (this->toParentObject() == video.toParentObject());
 }
 
 bool Video::operator!=(const Video &video)

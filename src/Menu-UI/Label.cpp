@@ -31,7 +31,7 @@ UIElement Label::toParentObject() const
 
 bool Label::operator==(const Label &label)
 {
-    return (this->_text == label._text && ((UIElement)(*this)) == ((UIElement)label));
+    return (this->_text == label._text && this->toParentObject() == label.toParentObject());
 }
 
 bool Label::operator!=(const Label &label)
