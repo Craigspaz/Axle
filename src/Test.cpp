@@ -975,6 +975,69 @@ int CheckBox_Test_003()
 // Tests DropDown Getters and Setters
 int DropDown_Test_001()
 {
+    std::vector<std::string> testOptions;
+    testOptions.push_back("Test");
+    testOptions.push_back("Test2");
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    DropDown testDropdown(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    std::vector<std::string> testOptions1 = testDropdown.getOptions();
+    if (testOptions.size() != testOptions1.size())
+    {
+        std::cerr << "DropDown_Test_001 failed. DropDown contructor failed to set the options" << std::endl;
+        return 0;
+    }
+    else
+    {
+        for (int i = 0; i < testOptions.size(); i++)
+        {
+            if (testOptions[i].compare(testOptions1[i]) != 0)
+            {
+                std::cerr << "DropDown_Test_001 failed. DropDown options values did not match. Expected:" << testOptions[i] << " . Got: " << testOptions1[i] << std::endl;
+                return 0;
+            }
+        }
+    }
+
+    // Tests the getPosition() getter and constructor
+    if (testDropdown.getPosition() != testPosition)
+    {
+        std::cerr << "Alert_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testDropdown.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (testDropdown.getRotation() != testRotation)
+    {
+        std::cerr << "Alert_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testDropdown.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (testDropdown.getScale() != testScale)
+    {
+        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testDropdown.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (testDropdown.isVisible() != testVisible)
+    {
+        std::cerr << "Alert_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testDropdown.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (testDropdown.isDisabled() != testDisabled)
+    {
+        std::cerr << "Alert_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testDropdown.isDisabled() << std::endl;
+        return 0;
+    }
 
     std::cout << "DropDown_Test_001 Passed" << std::endl;
     return 1;
@@ -983,6 +1046,80 @@ int DropDown_Test_001()
 // Tests DropDown Operator ==
 int DropDown_Test_002()
 {
+    std::vector<std::string> testOptions;
+    testOptions.push_back("Test");
+    testOptions.push_back("Test2");
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    DropDown testDropdown(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+    DropDown testDropdown1(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(21, 2, 3);
+    DropDown testDropdown2(testOptions, testOptions.size(), testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testRotation2(24, 5, 6);
+    DropDown testDropdown3(testOptions, testOptions.size(), testPosition, testRotation2, testScale, testVisible, testDisabled);
+
+    glm::vec3 testScale2(27, 8, 9);
+    DropDown testDropdown4(testOptions, testOptions.size(), testPosition, testRotation, testScale2, testVisible, testDisabled);
+
+    bool testVisible2 = true;
+    DropDown testDropdown5(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible2, testDisabled);
+
+    bool testDisabled2 = false;
+    DropDown testDropdown6(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled2);
+
+    if (testDropdown == testDropdown)
+    {
+    }
+    else
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown did not equal itself" << std::endl;
+        return 0;
+    }
+
+    if (testDropdown == testDropdown1)
+    {
+    }
+    else
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown did not equal a dropdown with the same values" << std::endl;
+        return 0;
+    }
+
+    if (testDropdown == testDropdown2)
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different positions" << std::endl;
+        return 0;
+    }
+
+    if (testDropdown == testDropdown3)
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different rotations" << std::endl;
+        return 0;
+    }
+
+    if (testDropdown == testDropdown4)
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different scales" << std::endl;
+        return 0;
+    }
+
+    if (testDropdown == testDropdown5)
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different visibilities" << std::endl;
+        return 0;
+    }
+
+    if (testDropdown == testDropdown6)
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different disabled states" << std::endl;
+        return 0;
+    }
 
     std::cout << "DropDown_Test_002 Passed" << std::endl;
     return 1;
@@ -991,8 +1128,208 @@ int DropDown_Test_002()
 // Tests DropDown Operator !=
 int DropDown_Test_003()
 {
+    std::vector<std::string> testOptions;
+    testOptions.push_back("Test");
+    testOptions.push_back("Test2");
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    DropDown testDropdown(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+    DropDown testDropdown2(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    std::vector<std::string> testOptions2;
+    testOptions.push_back("Test");
+    testOptions.push_back("Test3");
+    DropDown testDropdown3(testOptions2, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    if (testDropdown != testDropdown)
+    {
+        std::cerr << "DropDown_Test_003 failed. DropDown did not equal itself" << std::endl;
+        return 0;
+    }
+
+    if (testDropdown != testDropdown2)
+    {
+        std::cerr << "DropDown_Test_003 failed. DropDown did not equal dropdown with same values" << std::endl;
+        return 0;
+    }
+
+    if (testDropdown != testDropdown3)
+    {
+    }
+    else
+    {
+        std::cerr << "DropDown_Test_003 failed. DropDown equaled dropdown with different options" << std::endl;
+        return 0;
+    }
 
     std::cout << "DropDown_Test_003 Passed" << std::endl;
+    return 1;
+}
+
+// Tests DropDown addOption
+int DropDown_Test_004()
+{
+    std::vector<std::string> testOptions;
+    testOptions.push_back("Test");
+    testOptions.push_back("Test2");
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    DropDown testDropdown(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    if (testDropdown.getOptions().size() != 2)
+    {
+        std::cerr << "DropDown_Test_004 failed. DropDown did not have the correct number of options. Expected: 2. Got: " << testDropdown.getOptions().size() << std::endl;
+        return 0;
+    }
+
+    testDropdown.addOption("Test3");
+    if (testDropdown.getOptions().size() != 3)
+    {
+        std::cerr << "DropDown_Test_004 failed. DropDown did not have the correct number of options. Expected: 3. Got: " << testDropdown.getOptions().size() << std::endl;
+        return 0;
+    }
+
+    std::string expected[3];
+    expected[0] = "Test";
+    expected[1] = "Test2";
+    expected[2] = "Test3";
+
+    std::vector<std::string> testOptions2 = testDropdown.getOptions();
+    for (int i = 0; i < testOptions2.size(); i++)
+    {
+        if (testOptions2[i].compare(expected[i]) != 0)
+        {
+            std::cerr << "DropDown_Test_004 failed. DropDown's options did not match after adding item. " << std::endl;
+            return 0;
+        }
+    }
+
+    std::cout << "DropDown_Test_004 Passed" << std::endl;
+    return 1;
+}
+
+// Tests DropDown setOptions
+int DropDown_Test_005()
+{
+    std::vector<std::string> testOptions;
+    testOptions.push_back("Test");
+    testOptions.push_back("Test2");
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    DropDown testDropdown(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    std::vector<std::string> testOptions2;
+    testOptions2.push_back("Hello World");
+    testOptions2.push_back("Hello World2");
+    testOptions2.push_back("Hello World3");
+
+    testDropdown.setOptions(testOptions2);
+
+    if (testDropdown.getOptions().size() != 3)
+    {
+        std::cerr << "DropDown_Test_005 failed. DropDown did not have the correct number of options. Expected: 3. Got: " << testDropdown.getOptions().size() << std::endl;
+        return 0;
+    }
+    std::string expected[3];
+    expected[0] = "Hello World";
+    expected[1] = "Hello World2";
+    expected[2] = "Hello World3";
+
+    std::vector<std::string> testOptions3 = testDropdown.getOptions();
+    for (int i = 0; i < testOptions3.size(); i++)
+    {
+        if (testOptions3[i].compare(expected[i]) != 0)
+        {
+            std::cerr << "DropDown_Test_005 failed. DropDown's options did not match after adding item. " << std::endl;
+            return 0;
+        }
+    }
+
+    std::cout << "DropDown_Test_005 Passed" << std::endl;
+    return 1;
+}
+
+// Tests DropDown removeOption
+int DropDown_Test_006()
+{
+    std::vector<std::string> testOptions;
+    testOptions.push_back("Test");
+    testOptions.push_back("Test2");
+    testOptions.push_back("Test3");
+    testOptions.push_back("Test4");
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    DropDown testDropdown(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    testDropdown.removeOption("Test2");
+
+    if (testDropdown.getOptions().size() != 3)
+    {
+        std::cerr << "DropDown_Test_006 failed. DropDown did not have the correct number of options. Expected: 3. Got: " << testDropdown.getOptions().size() << std::endl;
+        return 0;
+    }
+    std::string expected[3];
+    expected[0] = "Test";
+    expected[1] = "Test3";
+    expected[2] = "Test4";
+
+    std::vector<std::string> testOptions3 = testDropdown.getOptions();
+    for (int i = 0; i < testOptions3.size(); i++)
+    {
+        if (testOptions3[i].compare(expected[i]) != 0)
+        {
+            std::cerr << "DropDown_Test_006 failed. DropDown's options did not match after adding item. " << std::endl;
+            return 0;
+        }
+    }
+
+    testDropdown.removeOption("Test3");
+
+    if (testDropdown.getOptions().size() != 2)
+    {
+        std::cerr << "DropDown_Test_006 failed. DropDown did not have the correct number of options. Expected: 2. Got: " << testDropdown.getOptions().size() << std::endl;
+        return 0;
+    }
+    std::string expected2[2];
+    expected2[0] = "Test";
+    expected2[1] = "Test4";
+
+    testOptions3 = testDropdown.getOptions();
+    for (int i = 0; i < testOptions3.size(); i++)
+    {
+        if (testOptions3[i].compare(expected2[i]) != 0)
+        {
+            std::cerr << "DropDown_Test_006 failed. DropDown's options did not match after adding item. " << std::endl;
+            return 0;
+        }
+    }
+
+
+    testDropdown.removeOption("Test");
+    testDropdown.removeOption("Test4");
+    if (testDropdown.getOptions().size() != 0)
+    {
+        std::cerr << "DropDown_Test_006 failed. DropDown did not have the correct number of options. Expected: 0. Got: " << testDropdown.getOptions().size() << std::endl;
+        return 0;
+    }
+
+    std::cout << "DropDown_Test_006 Passed" << std::endl;
     return 1;
 }
 
@@ -1238,7 +1575,7 @@ int main()
         std::cout << "You are currently running on an  unsupported platform!" << std::endl;
     }
 
-    int numberOfTests = 42;
+    int numberOfTests = 45;
     int numberOfTestsPassed = 0;
 
     numberOfTestsPassed += Label_Test_001();
@@ -1260,6 +1597,9 @@ int main()
     numberOfTestsPassed += DropDown_Test_001();
     numberOfTestsPassed += DropDown_Test_002();
     numberOfTestsPassed += DropDown_Test_003();
+    numberOfTestsPassed += DropDown_Test_004();
+    numberOfTestsPassed += DropDown_Test_005();
+    numberOfTestsPassed += DropDown_Test_006();
 
     numberOfTestsPassed += Image_Test_001();
     numberOfTestsPassed += Image_Test_002();
