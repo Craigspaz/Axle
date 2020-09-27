@@ -881,6 +881,7 @@ int CheckBox_Test_002()
     bool testDisabled2 = false;
     CheckBox testCheckBox8(currentState, testPosition, testRotation, testScale, testVisible, testDisabled2);
 
+    // Tests if checkbox equals itself
     if (testCheckBox == testCheckBox)
     {
     }
@@ -890,6 +891,7 @@ int CheckBox_Test_002()
         return 0;
     }
 
+    // Test if checkbox equals checkbox with same values
     if (testCheckBox == testCheckBox2)
     {
     }
@@ -899,36 +901,42 @@ int CheckBox_Test_002()
         return 0;
     }
 
+    // Tests if checkbox equals a checkbox with a different state
     if (testCheckBox == testCheckBox3)
     {
         std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different state" << std::endl;
         return 0;
     }
 
+    // Tests if a checkbox equals a checkbox with different positions
     if (testCheckBox == testCheckBox4)
     {
         std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different position" << std::endl;
         return 0;
     }
 
+    // Tests if a checkbox equals a checkbox with different rotations
     if (testCheckBox == testCheckBox5)
     {
         std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different rotation" << std::endl;
         return 0;
     }
 
+    // Tests if a checkbox equals a checkbox with a different scale
     if (testCheckBox == testCheckBox6)
     {
         std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different scale" << std::endl;
         return 0;
     }
 
+    // Tests if a checkbox equals a checkbox with a different visibilities
     if (testCheckBox == testCheckBox7)
     {
         std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different visibility" << std::endl;
         return 0;
     }
 
+    // Tests if a checkbox equals a checkbox with a different state
     if (testCheckBox == testCheckBox8)
     {
         std::cerr << "CheckBox_Test_002 failed. CheckBox was equal to a checkbox with a different disabled state" << std::endl;
@@ -953,12 +961,14 @@ int CheckBox_Test_003()
     bool currentState2 = true;
     CheckBox testCheckBox2(currentState2, testPosition, testRotation, testScale, testVisible, testDisabled);
 
+    // Tests if a checkbox does not equal itself
     if (testCheckBox != testCheckBox)
     {
         std::cerr << "CheckBox_Test_002 failed. CheckBox was not equal to itself" << std::endl;
         return 0;
     }
 
+    // Tests if a checkbox does not equal a checkbox with different states
     if (testCheckBox != testCheckBox2)
     {
     }
@@ -986,6 +996,7 @@ int DropDown_Test_001()
 
     DropDown testDropdown(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
 
+    // Tests that the correct number of items are in the options list and that they match up as expected
     std::vector<std::string> testOptions1 = testDropdown.getOptions();
     if (testOptions.size() != testOptions1.size())
     {
@@ -1073,6 +1084,7 @@ int DropDown_Test_002()
     bool testDisabled2 = false;
     DropDown testDropdown6(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled2);
 
+    // Tests if a dropdown equals itself
     if (testDropdown == testDropdown)
     {
     }
@@ -1082,6 +1094,7 @@ int DropDown_Test_002()
         return 0;
     }
 
+    // Tests if a dropdown equals a dropdown with the same values
     if (testDropdown == testDropdown1)
     {
     }
@@ -1091,30 +1104,35 @@ int DropDown_Test_002()
         return 0;
     }
 
+    // Tests if a dropdown equals a dropdown with different positions
     if (testDropdown == testDropdown2)
     {
         std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different positions" << std::endl;
         return 0;
     }
 
+    // Tests if a dropdown equals a dropdown with different rotations
     if (testDropdown == testDropdown3)
     {
         std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different rotations" << std::endl;
         return 0;
     }
 
+    // Tests if a dropdown equals a dropdown with different scales
     if (testDropdown == testDropdown4)
     {
         std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different scales" << std::endl;
         return 0;
     }
 
+    // Tests if a dropdown equals a dropdown with different visibilities
     if (testDropdown == testDropdown5)
     {
         std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different visibilities" << std::endl;
         return 0;
     }
 
+    // Tests if a dropdown equals a dropdown with different disabled states
     if (testDropdown == testDropdown6)
     {
         std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different disabled states" << std::endl;
@@ -1145,18 +1163,21 @@ int DropDown_Test_003()
     testOptions.push_back("Test3");
     DropDown testDropdown3(testOptions2, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
 
+    // Tests if dropdown does not equal itself
     if (testDropdown != testDropdown)
     {
         std::cerr << "DropDown_Test_003 failed. DropDown did not equal itself" << std::endl;
         return 0;
     }
 
+    // Tests if dropdown does not equal another dropdown with the same values
     if (testDropdown != testDropdown2)
     {
         std::cerr << "DropDown_Test_003 failed. DropDown did not equal dropdown with same values" << std::endl;
         return 0;
     }
 
+    // Tests if a dropdown does not equal a dropdown with different options
     if (testDropdown != testDropdown3)
     {
     }
@@ -1184,6 +1205,7 @@ int DropDown_Test_004()
 
     DropDown testDropdown(testOptions, testOptions.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
 
+    // Tests if a dropdown has the expected number of options
     if (testDropdown.getOptions().size() != 2)
     {
         std::cerr << "DropDown_Test_004 failed. DropDown did not have the correct number of options. Expected: 2. Got: " << testDropdown.getOptions().size() << std::endl;
@@ -1191,12 +1213,14 @@ int DropDown_Test_004()
     }
 
     testDropdown.addOption("Test3");
+    // Tests if the dropdown has the correct number of options after adding an option
     if (testDropdown.getOptions().size() != 3)
     {
         std::cerr << "DropDown_Test_004 failed. DropDown did not have the correct number of options. Expected: 3. Got: " << testDropdown.getOptions().size() << std::endl;
         return 0;
     }
 
+    // Tests if the options are the expected values
     std::string expected[3];
     expected[0] = "Test";
     expected[1] = "Test2";
@@ -1237,11 +1261,14 @@ int DropDown_Test_005()
 
     testDropdown.setOptions(testOptions2);
 
+    // Tests that the dropdown has the correct number of values
     if (testDropdown.getOptions().size() != 3)
     {
         std::cerr << "DropDown_Test_005 failed. DropDown did not have the correct number of options. Expected: 3. Got: " << testDropdown.getOptions().size() << std::endl;
         return 0;
     }
+
+    // Tests that the dropdown has the correct option values
     std::string expected[3];
     expected[0] = "Hello World";
     expected[1] = "Hello World2";
@@ -1279,11 +1306,14 @@ int DropDown_Test_006()
 
     testDropdown.removeOption("Test2");
 
+    // Tests that the dropdown has the correct number of values after removing one
     if (testDropdown.getOptions().size() != 3)
     {
         std::cerr << "DropDown_Test_006 failed. DropDown did not have the correct number of options. Expected: 3. Got: " << testDropdown.getOptions().size() << std::endl;
         return 0;
     }
+
+    // Tests that the correct values in the options remain
     std::string expected[3];
     expected[0] = "Test";
     expected[1] = "Test3";
@@ -1301,11 +1331,14 @@ int DropDown_Test_006()
 
     testDropdown.removeOption("Test3");
 
+    // Tests that the correct number of values are in the options list
     if (testDropdown.getOptions().size() != 2)
     {
         std::cerr << "DropDown_Test_006 failed. DropDown did not have the correct number of options. Expected: 2. Got: " << testDropdown.getOptions().size() << std::endl;
         return 0;
     }
+
+    // Tests that the correct values remain
     std::string expected2[2];
     expected2[0] = "Test";
     expected2[1] = "Test4";
@@ -1320,7 +1353,7 @@ int DropDown_Test_006()
         }
     }
 
-
+    // Tests that removing the rest of the items causes the size to go to 0
     testDropdown.removeOption("Test");
     testDropdown.removeOption("Test4");
     if (testDropdown.getOptions().size() != 0)
@@ -1329,6 +1362,12 @@ int DropDown_Test_006()
         return 0;
     }
 
+    testDropdown.removeOption("Hello World"); // This does not do anything since the value is not in the list
+    if (testDropdown.getOptions().size() != 0)
+    {
+        std::cerr << "DropDown_Test_006 failed. DropDown did not have the correct number of options. Expected: 0. Got: " << testDropdown.getOptions().size() << std::endl;
+        return 0;
+    }
     std::cout << "DropDown_Test_006 Passed" << std::endl;
     return 1;
 }
@@ -1336,6 +1375,48 @@ int DropDown_Test_006()
 // Tests Image Getters and Setters
 int Image_Test_001()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Image testImage(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests the getPosition() getter and constructor
+    if (testImage.getPosition() != testPosition)
+    {
+        std::cerr << "Alert_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testImage.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (testImage.getRotation() != testRotation)
+    {
+        std::cerr << "Alert_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testImage.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (testImage.getScale() != testScale)
+    {
+        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testImage.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (testImage.isVisible() != testVisible)
+    {
+        std::cerr << "Alert_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testImage.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (testImage.isDisabled() != testDisabled)
+    {
+        std::cerr << "Alert_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testImage.isDisabled() << std::endl;
+        return 0;
+    }
 
     std::cout << "Image_Test_001 Passed" << std::endl;
     return 1;
@@ -1344,6 +1425,84 @@ int Image_Test_001()
 // Tests Image Operator ==
 int Image_Test_002()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Image testImage(testPosition, testRotation, testScale, testVisible, testDisabled);
+    Image testImage2(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(21, 2, 3);
+    Image testImage3(testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testRotation2(24, 5, 6);
+    Image testImage4(testPosition, testRotation2, testScale, testVisible, testDisabled);
+
+    glm::vec3 testScale2(7, 28, 9);
+    Image testImage5(testPosition, testRotation, testScale2, testVisible, testDisabled);
+
+    bool testVisible2 = true;
+    Image testImage6(testPosition, testRotation, testScale, testVisible2, testDisabled);
+
+    bool testDisabled2 = false;
+    Image testImage7(testPosition, testRotation, testScale, testVisible, testDisabled2);
+
+    // Tests if an image equals itself
+    if (testImage == testImage)
+    {
+    }
+    else
+    {
+        std::cerr << "Image_Test_002 Failed. Image did not equal itself" << std::endl;
+        return 0;
+    }
+
+    // Tests if an image is equal to an image with the same values
+    if (testImage == testImage2)
+    {
+    }
+    else
+    {
+        std::cerr << "Image_Test_002 Failed. Image did not equal an image with the same values" << std::endl;
+        return 0;
+    }
+
+    // Tests if an image equals an image with different positions
+    if (testImage == testImage3)
+    {
+        std::cerr << "Image_Test_002 Failed. Image equaled imge with different positions" << std::endl;
+        return 0;
+    }
+
+    // Tests if an image equals an image with different rotations
+    if (testImage == testImage4)
+    {
+        std::cerr << "Image_Test_002 Failed. Image equaled imge with different rotations" << std::endl;
+        return 0;
+    }
+
+    // Tests if an image equals an image with different scales
+    if (testImage == testImage5)
+    {
+        std::cerr << "Image_Test_002 Failed. Image equaled imge with different scales" << std::endl;
+        return 0;
+    }
+
+    // Tests if an image equals an image with different visibilities
+    if (testImage == testImage6)
+    {
+        std::cerr << "Image_Test_002 Failed. Image equaled imge with different visibilities" << std::endl;
+        return 0;
+    }
+
+    // Tests if an image equals and image with different disabled states
+    if (testImage == testImage7)
+    {
+        std::cerr << "Image_Test_002 Failed. Image equaled imge with different disabled states" << std::endl;
+        return 0;
+    }
 
     std::cout << "Image_Test_002 Passed" << std::endl;
     return 1;
