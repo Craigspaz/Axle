@@ -1671,6 +1671,7 @@ int Layout_Test_002()
     testLayout6.addElement(&testLabel);
     testLayout7.addElement(&testLabel);
 
+    // Tests if layout equals itself
     if (testLayout == testLayout)
     {
     }
@@ -1680,6 +1681,7 @@ int Layout_Test_002()
         return 0;
     }
 
+    // Tests if layout equal layout with same values
     if (testLayout == testLayout1)
     {
     }
@@ -1689,36 +1691,42 @@ int Layout_Test_002()
         return 0;
     }
 
+    // Tests if layout equals layout with the different elements
     if (testLayout == testLayout2)
     {
         std::cerr << "Layout_Test_002 Failed. Layout equaled a layout different elements" << std::endl;
         return 0;
     }
 
+    // Tests if layout equals layout with different positions
     if (testLayout == testLayout3)
     {
         std::cerr << "Layout_Test_002 Failed. Layouts with different positions were found to be equal" << std::endl;
         return 0;
     }
 
+    // Tests if layout equals layout with different rotations
     if (testLayout == testLayout4)
     {
         std::cerr << "Layout_Test_002 Failed. Layouts with different rotations were found to be equal" << std::endl;
         return 0;
     }
 
+    // Tests if layout equals layout with different scales
     if (testLayout == testLayout5)
     {
         std::cerr << "Layout_Test_002 Failed. Layouts with different scales were found to be equal" << std::endl;
         return 0;
     }
 
+    // Tests if layout equals layout with different visibilities
     if (testLayout == testLayout6)
     {
         std::cerr << "Layout_Test_002 Failed. Layouts with different visibilities were found to be equal" << std::endl;
         return 0;
     }
 
+    // Tests if layout equals layout with different disabled states
     if (testLayout == testLayout7)
     {
         std::cerr << "Layout_Test_002 Failed. Layouts with different disabled states were found to be equal" << std::endl;
@@ -1732,6 +1740,60 @@ int Layout_Test_002()
 // Tests Layout Operator !=
 int Layout_Test_003()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Layout testLayout(testPosition, testRotation, testScale, testVisible, testDisabled);
+    Layout testLayout1(testPosition, testRotation, testScale, testVisible, testDisabled);
+    Layout testLayout2(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(1, 22, 3);
+    Layout testLayout3(testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    Label testLabel("Test Label", testPosition, testRotation, testScale, testVisible, testDisabled);
+    Label testLabel2("Test Label2", testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    testLayout.addElement(&testLabel);
+    testLayout1.addElement(&testLabel);
+    testLayout2.addElement(&testLabel2);
+    testLayout3.addElement(&testLabel);
+
+    // Tests if layout does not equal itself
+    if (testLayout != testLayout)
+    {
+        std::cerr << "Layout_Test_003 Failed. Layout did not equal itself" << std::endl;
+        return 0;
+    }
+
+    // Tests if layout does not equal a layout with the same values
+    if (testLayout != testLayout1)
+    {
+        std::cerr << "Layout_Test_003 Failed. Layout did not equal another layout with the same values" << std::endl;
+        return 0;
+    }
+
+    // Tests if layout does not equal a layout with different elements
+    if (testLayout != testLayout2)
+    {
+    }
+    else
+    {
+        std::cerr << "Layout_Test_003 Failed. Layout equaled layout with different elements" << std::endl;
+        return 0;
+    }
+
+    // Tests if layout does not equal a layout with different positions
+    if (testLayout != testLayout3)
+    {
+    }
+    else
+    {
+        std::cerr << "Layout_Test_003 Failed. Layout equaled layout with different positions" << std::endl;
+        return 0;
+    }
 
     std::cout << "Layout_Test_003 Passed" << std::endl;
     return 1;
