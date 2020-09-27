@@ -815,35 +815,35 @@ int CheckBox_Test_001()
     // Tests the getPosition() getter and constructor
     if (testCheckBox.getPosition() != testPosition)
     {
-        std::cerr << "Alert_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testCheckBox.getPosition()) << std::endl;
+        std::cerr << "CheckBox_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testCheckBox.getPosition()) << std::endl;
         return 0;
     }
 
     // Tests the getRotation() getter and constructor
     if (testCheckBox.getRotation() != testRotation)
     {
-        std::cerr << "Alert_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testCheckBox.getRotation()) << std::endl;
+        std::cerr << "CheckBox_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testCheckBox.getRotation()) << std::endl;
         return 0;
     }
 
     // Tests the getScale() getter and constructor
     if (testCheckBox.getScale() != testScale)
     {
-        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testCheckBox.getScale()) << std::endl;
+        std::cerr << "CheckBox_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testCheckBox.getScale()) << std::endl;
         return 0;
     }
 
     // Tests the isVisible() getter and constructor
     if (testCheckBox.isVisible() != testVisible)
     {
-        std::cerr << "Alert_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testCheckBox.isVisible() << std::endl;
+        std::cerr << "CheckBox_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testCheckBox.isVisible() << std::endl;
         return 0;
     }
 
     // Tests the isDisabled() getter and constructor
     if (testCheckBox.isDisabled() != testDisabled)
     {
-        std::cerr << "Alert_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testCheckBox.isDisabled() << std::endl;
+        std::cerr << "CheckBox_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testCheckBox.isDisabled() << std::endl;
         return 0;
     }
 
@@ -1018,35 +1018,35 @@ int DropDown_Test_001()
     // Tests the getPosition() getter and constructor
     if (testDropdown.getPosition() != testPosition)
     {
-        std::cerr << "Alert_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testDropdown.getPosition()) << std::endl;
+        std::cerr << "DropDown_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testDropdown.getPosition()) << std::endl;
         return 0;
     }
 
     // Tests the getRotation() getter and constructor
     if (testDropdown.getRotation() != testRotation)
     {
-        std::cerr << "Alert_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testDropdown.getRotation()) << std::endl;
+        std::cerr << "DropDown_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testDropdown.getRotation()) << std::endl;
         return 0;
     }
 
     // Tests the getScale() getter and constructor
     if (testDropdown.getScale() != testScale)
     {
-        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testDropdown.getScale()) << std::endl;
+        std::cerr << "DropDown_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testDropdown.getScale()) << std::endl;
         return 0;
     }
 
     // Tests the isVisible() getter and constructor
     if (testDropdown.isVisible() != testVisible)
     {
-        std::cerr << "Alert_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testDropdown.isVisible() << std::endl;
+        std::cerr << "DropDown_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testDropdown.isVisible() << std::endl;
         return 0;
     }
 
     // Tests the isDisabled() getter and constructor
     if (testDropdown.isDisabled() != testDisabled)
     {
-        std::cerr << "Alert_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testDropdown.isDisabled() << std::endl;
+        std::cerr << "DropDown_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testDropdown.isDisabled() << std::endl;
         return 0;
     }
 
@@ -1386,35 +1386,35 @@ int Image_Test_001()
     // Tests the getPosition() getter and constructor
     if (testImage.getPosition() != testPosition)
     {
-        std::cerr << "Alert_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testImage.getPosition()) << std::endl;
+        std::cerr << "Image_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testImage.getPosition()) << std::endl;
         return 0;
     }
 
     // Tests the getRotation() getter and constructor
     if (testImage.getRotation() != testRotation)
     {
-        std::cerr << "Alert_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testImage.getRotation()) << std::endl;
+        std::cerr << "Image_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testImage.getRotation()) << std::endl;
         return 0;
     }
 
     // Tests the getScale() getter and constructor
     if (testImage.getScale() != testScale)
     {
-        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testImage.getScale()) << std::endl;
+        std::cerr << "Image_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testImage.getScale()) << std::endl;
         return 0;
     }
 
     // Tests the isVisible() getter and constructor
     if (testImage.isVisible() != testVisible)
     {
-        std::cerr << "Alert_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testImage.isVisible() << std::endl;
+        std::cerr << "Image_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testImage.isVisible() << std::endl;
         return 0;
     }
 
     // Tests the isDisabled() getter and constructor
     if (testImage.isDisabled() != testDisabled)
     {
-        std::cerr << "Alert_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testImage.isDisabled() << std::endl;
+        std::cerr << "Image_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testImage.isDisabled() << std::endl;
         return 0;
     }
 
@@ -1609,7 +1609,7 @@ int Layout_Test_001()
     // Tests the getScale() getter and constructor
     if (testLayout.getScale() != testScale)
     {
-        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testLayout.getScale()) << std::endl;
+        std::cerr << "Layout_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testLayout.getScale()) << std::endl;
         return 0;
     }
 
@@ -1802,6 +1802,63 @@ int Layout_Test_003()
 // Tests ProgressBar Getters and Setters
 int ProgressBar_Test_001()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    ProgressBar testProgressBar(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests the getProgress getter and constructor
+    if (testProgressBar.getProgress() != 0.0f)
+    {
+        std::cerr << "ProgressBar_Test_001 Failed. getProgress did not match progress initialized in the constructor. Expected: " << 0.0f << ". Got: " << testProgressBar.getProgress() << std::endl;
+        return 0;
+    }
+
+    testProgressBar.setProgress(0.49f);
+    // Tests the getProgress getter and constructor
+    if (testProgressBar.getProgress() != 0.49f)
+    {
+        std::cerr << "ProgressBar_Test_001 Failed. getProgress did not match progress set in setProgress. Expected: " << 0.0f << ". Got: " << testProgressBar.getProgress() << std::endl;
+        return 0;
+    }
+
+    // Tests the getPosition() getter and constructor
+    if (testProgressBar.getPosition() != testPosition)
+    {
+        std::cerr << "ProgressBar_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testProgressBar.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (testProgressBar.getRotation() != testRotation)
+    {
+        std::cerr << "ProgressBar_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testProgressBar.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (testProgressBar.getScale() != testScale)
+    {
+        std::cerr << "ProgressBar_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testProgressBar.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (testProgressBar.isVisible() != testVisible)
+    {
+        std::cerr << "ProgressBar_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testProgressBar.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (testProgressBar.isDisabled() != testDisabled)
+    {
+        std::cerr << "ProgressBar_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testProgressBar.isDisabled() << std::endl;
+        return 0;
+    }
 
     std::cout << "ProgressBar_Test_001 Passed" << std::endl;
     return 1;
