@@ -1,4 +1,5 @@
 #include "Menu-UI/Layout.h"
+#include <iostream>
 
 Layout::Layout(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible, bool disabled)
     : UIElement(position, rotation, scale, visible, disabled)
@@ -42,7 +43,27 @@ UIElement Layout::toParentObject() const
 
 bool Layout::operator==(const Layout &layout)
 {
-    return (this->_elements.size() == layout._elements.size() && this->toParentObject() == layout.toParentObject());
+    bool part1 = (this->_elements.size() == layout._elements.size() && this->toParentObject() == layout.toParentObject());
+    bool elements = false;
+
+    if (part1)
+    {
+        bool brokeOut = false;
+        for (int i = 0; i < this->_elements.size(); i++)
+        {
+            if (this->_elements[i] != layout._elements[i])
+            {
+                brokeOut = true;
+                break;
+            }
+        }
+        if (!brokeOut)
+        {
+            elements = true;
+        }
+    }
+
+    return part1 && elements;
 }
 
 bool Layout::operator!=(const Layout &layout)

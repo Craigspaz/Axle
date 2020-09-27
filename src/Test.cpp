@@ -1634,6 +1634,96 @@ int Layout_Test_001()
 // Tests Layout Operator ==
 int Layout_Test_002()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Layout testLayout(testPosition, testRotation, testScale, testVisible, testDisabled);
+    Layout testLayout1(testPosition, testRotation, testScale, testVisible, testDisabled);
+    Layout testLayout2(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(1, 22, 3);
+    Layout testLayout3(testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testRotation2(4, 25, 6);
+    Layout testLayout4(testPosition, testRotation2, testScale, testVisible, testDisabled);
+
+    glm::vec3 testScale2(7, 8, 29);
+    Layout testLayout5(testPosition, testRotation, testScale2, testVisible, testDisabled);
+
+    bool testVisible2 = true;
+    Layout testLayout6(testPosition, testRotation, testScale, testVisible2, testDisabled);
+
+    bool testDisabled2 = false;
+    Layout testLayout7(testPosition, testRotation, testScale, testVisible, testDisabled2);
+
+    Label testLabel("Test Label", testPosition, testRotation, testScale, testVisible, testDisabled);
+    Label testLabel2("Test Label2", testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    testLayout.addElement(&testLabel);
+    testLayout1.addElement(&testLabel);
+    testLayout2.addElement(&testLabel2);
+    testLayout3.addElement(&testLabel);
+    testLayout4.addElement(&testLabel);
+    testLayout5.addElement(&testLabel);
+    testLayout6.addElement(&testLabel);
+    testLayout7.addElement(&testLabel);
+
+    if (testLayout == testLayout)
+    {
+    }
+    else
+    {
+        std::cerr << "Layout_Test_002 Failed. Layout did not equal itself" << std::endl;
+        return 0;
+    }
+
+    if (testLayout == testLayout1)
+    {
+    }
+    else
+    {
+        std::cerr << "Layout_Test_002 Failed. Layout did not equal a layout with the same values" << std::endl;
+        return 0;
+    }
+
+    if (testLayout == testLayout2)
+    {
+        std::cerr << "Layout_Test_002 Failed. Layout equaled a layout different elements" << std::endl;
+        return 0;
+    }
+
+    if (testLayout == testLayout3)
+    {
+        std::cerr << "Layout_Test_002 Failed. Layouts with different positions were found to be equal" << std::endl;
+        return 0;
+    }
+
+    if (testLayout == testLayout4)
+    {
+        std::cerr << "Layout_Test_002 Failed. Layouts with different rotations were found to be equal" << std::endl;
+        return 0;
+    }
+
+    if (testLayout == testLayout5)
+    {
+        std::cerr << "Layout_Test_002 Failed. Layouts with different scales were found to be equal" << std::endl;
+        return 0;
+    }
+
+    if (testLayout == testLayout6)
+    {
+        std::cerr << "Layout_Test_002 Failed. Layouts with different visibilities were found to be equal" << std::endl;
+        return 0;
+    }
+
+    if (testLayout == testLayout7)
+    {
+        std::cerr << "Layout_Test_002 Failed. Layouts with different disabled states were found to be equal" << std::endl;
+        return 0;
+    }
 
     std::cout << "Layout_Test_002 Passed" << std::endl;
     return 1;
