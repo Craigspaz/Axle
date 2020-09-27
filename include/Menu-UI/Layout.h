@@ -15,7 +15,7 @@ public:
 
     std::vector<UIElement *> getElements();
     void addElement(UIElement *element);
-    void removeOption(UIElement *element);
+    void removeElement(UIElement *element);
 
     UIElement toParentObject() const;
     bool operator==(const Layout &layout);

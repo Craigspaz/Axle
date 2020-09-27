@@ -1511,6 +1511,33 @@ int Image_Test_002()
 // Tests Image Operator !=
 int Image_Test_003()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Image testImage(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(1, 22, 3);
+    Image testImage2(testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests if image is not equal to itself
+    if (testImage != testImage)
+    {
+        std::cerr << "Image_Test_003 Failed. Image did not equal itself" << std::endl;
+        return 0;
+    }
+
+    // Tests if image is not equal to an image with a different position
+    if (testImage != testImage2)
+    {
+    }
+    else
+    {
+        std::cerr << "Image_Test_003 Failed. Image equaled image with different position" << std::endl;
+        return 0;
+    }
 
     std::cout << "Image_Test_003 Passed" << std::endl;
     return 1;
@@ -1519,6 +1546,86 @@ int Image_Test_003()
 // Tests Layout Getters and Setters
 int Layout_Test_001()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    Layout testLayout(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests if layout has 0 elements to start with
+    if (testLayout.getElements().size() != 0)
+    {
+        std::cerr << "Layout_Test_001 Failed. Layout did not have 0 elements" << std::endl;
+        return 0;
+    }
+
+    Label testLabel("Test Label", testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    testLayout.addElement(&testLabel);
+
+    // Tests if layout has 1 elements
+    if (testLayout.getElements().size() != 1)
+    {
+        std::cerr << "Layout_Test_001 Failed. Layout did not have 1 elements" << std::endl;
+        return 0;
+    }
+    Label testLabel2("Test Label2", testPosition, testRotation, testScale, testVisible, testDisabled);
+    Label testLabel3("Test Label3", testPosition, testRotation, testScale, testVisible, testDisabled);
+    testLayout.addElement(&testLabel2);
+    testLayout.addElement(&testLabel3);
+
+    // Tests if layout has 3 elements
+    if (testLayout.getElements().size() != 3)
+    {
+        std::cerr << "Layout_Test_001 Failed. Layout did not have 3 elements" << std::endl;
+        return 0;
+    }
+
+    testLayout.removeElement(&testLabel);
+
+    // Tests if layout has 2 elements
+    if (testLayout.getElements().size() != 2)
+    {
+        std::cerr << "Layout_Test_001 Failed. Layout did not have 2 elements" << std::endl;
+        return 0;
+    }
+
+    // Tests the getPosition() getter and constructor
+    if (testLayout.getPosition() != testPosition)
+    {
+        std::cerr << "Layout_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testLayout.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (testLayout.getRotation() != testRotation)
+    {
+        std::cerr << "Layout_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testLayout.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (testLayout.getScale() != testScale)
+    {
+        std::cerr << "Alert_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testLayout.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (testLayout.isVisible() != testVisible)
+    {
+        std::cerr << "Layout_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testLayout.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (testLayout.isDisabled() != testDisabled)
+    {
+        std::cerr << "Layout_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testLayout.isDisabled() << std::endl;
+        return 0;
+    }
 
     std::cout << "Layout_Test_001 Passed" << std::endl;
     return 1;

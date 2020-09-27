@@ -23,7 +23,7 @@ void Layout::addElement(UIElement *element)
     _elements.push_back(element);
 }
 
-void Layout::removeOption(UIElement *element)
+void Layout::removeElement(UIElement *element)
 {
     for (int i = 0; i < _elements.size(); i++)
     {
