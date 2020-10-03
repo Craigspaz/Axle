@@ -1015,6 +1015,57 @@ int DropDown_Test_001()
         }
     }
 
+    // Tests getDefaultOption()
+    if (testDropdown.getDefaultOption() != 0)
+    {
+        std::cerr << "DropDown_Test_001 Failed. getDefaultOption did not match the default value set in the constructor. Expected: 0"
+                  << ". Got: " << testDropdown.getDefaultOption() << std::endl;
+        return 0;
+    }
+
+    // Tests getSelectedOption()
+    if (testDropdown.getSelectedOption() != 0)
+    {
+        std::cerr << "DropDown_Test_001 Failed. getSelectedOption did not match the selected value set in the constructor. Expected: 0"
+                  << ". Got: " << testDropdown.getSelectedOption() << std::endl;
+        return 0;
+    }
+
+    // Tests getSelectedValue()
+    if (testDropdown.getSelectedValue().compare("Test") != 0)
+    {
+        std::cerr << "DropDown_Test_001 Failed. getSelectedValue did not match the selected value set in the constructor. Expected: Test"
+                  << ". Got: " << testDropdown.getSelectedValue() << std::endl;
+        return 0;
+    }
+
+    // Tests getDefaultValue()
+    if (testDropdown.getDefaultValue().compare("Test") != 0)
+    {
+        std::cerr << "DropDown_Test_001 Failed. getDefaultValue did not match the selected value set in the constructor. Expected: Test"
+                  << ". Got: " << testDropdown.getDefaultValue() << std::endl;
+        return 0;
+    }
+
+    testDropdown.setDefaultOption(1);
+    // Tests getDefaultValue()
+    if (testDropdown.getDefaultValue().compare("Test2") != 0)
+    {
+        std::cerr << "DropDown_Test_001 Failed. getDefaultValue did not match the selected value set in the constructor. Expected: Test2"
+                  << ". Got: " << testDropdown.getDefaultValue() << std::endl;
+        return 0;
+    }
+
+    testDropdown.setDefaultOption(0);
+    testDropdown.setSelectedOption(1);
+    // Tests getDefaultValue()
+    if (testDropdown.getSelectedValue().compare("Test2") != 0)
+    {
+        std::cerr << "DropDown_Test_001 Failed. getSelectedValue did not match the selected value set in the constructor. Expected: Test2"
+                  << ". Got: " << testDropdown.getSelectedValue() << std::endl;
+        return 0;
+    }
+
     // Tests the getPosition() getter and constructor
     if (testDropdown.getPosition() != testPosition)
     {
@@ -1138,6 +1189,24 @@ int DropDown_Test_002()
         std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different disabled states" << std::endl;
         return 0;
     }
+
+    // Tests default options
+    testDropdown1.setDefaultOption(1);
+    if (testDropdown == testDropdown1)
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different default values" << std::endl;
+        return 0;
+    }
+    testDropdown1.setDefaultOption(0);
+
+    // Tests selected values
+    testDropdown1.setSelectedOption(1);
+    if (testDropdown == testDropdown1)
+    {
+        std::cerr << "DropDown_Test_002 failed. DropDown equaled another dropdown with different selected values" << std::endl;
+        return 0;
+    }
+    testDropdown1.setSelectedOption(0);
 
     std::cout << "DropDown_Test_002 Passed" << std::endl;
     return 1;
@@ -1867,6 +1936,79 @@ int ProgressBar_Test_001()
 // Tests ProgressBar Operator ==
 int ProgressBar_Test_002()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    ProgressBar testProgressBar(testPosition, testRotation, testScale, testVisible, testDisabled);
+    ProgressBar testProgressBar1(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(1, 22, 3);
+    ProgressBar testProgressBar2(testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testRotation2(4, 5, 26);
+    ProgressBar testProgressBar3(testPosition, testRotation2, testScale, testVisible, testDisabled);
+
+    glm::vec3 testScale2(7, 28, 9);
+    ProgressBar testProgressBar4(testPosition, testRotation, testScale2, testVisible, testDisabled);
+
+    bool testVisible2 = true;
+    ProgressBar testProgressBar5(testPosition, testRotation, testScale, testVisible2, testDisabled);
+
+    bool testDisabled2 = false;
+    ProgressBar testProgressBar6(testPosition, testRotation, testScale, testVisible, testDisabled2);
+
+    // Tests if a progressbar equals itself
+    if (testProgressBar == testProgressBar)
+    {
+    }
+    else
+    {
+        std::cerr << "ProgressBar_Test_002 Failed. Progress Bar did not equal itself" << std::endl;
+        return 0;
+    }
+
+    // Tests if a progressbar equals progressbar with same values
+    if (testProgressBar == testProgressBar1)
+    {
+    }
+    else
+    {
+        std::cerr << "ProgressBar_Test_002 Failed. Progress Bar did not equal progress bar with same values" << std::endl;
+        return 0;
+    }
+
+    if (testProgressBar == testProgressBar2)
+    {
+        std::cerr << "ProgressBar_Test_002 Failed. Progress Bar equaled progress bar with different positions" << std::endl;
+        return 0;
+    }
+
+    if (testProgressBar == testProgressBar3)
+    {
+        std::cerr << "ProgressBar_Test_002 Failed. Progress Bar equaled progress bar with different rotations" << std::endl;
+        return 0;
+    }
+
+    if (testProgressBar == testProgressBar4)
+    {
+        std::cerr << "ProgressBar_Test_002 Failed. Progress Bar equaled progress bar with different scales" << std::endl;
+        return 0;
+    }
+
+    if (testProgressBar == testProgressBar5)
+    {
+        std::cerr << "ProgressBar_Test_002 Failed. Progress Bar equaled progress bar with different visibilities" << std::endl;
+        return 0;
+    }
+
+    if (testProgressBar == testProgressBar6)
+    {
+        std::cerr << "ProgressBar_Test_002 Failed. Progress Bar equaled progress bar with different disabled states" << std::endl;
+        return 0;
+    }
 
     std::cout << "ProgressBar_Test_002 Passed" << std::endl;
     return 1;
@@ -1875,6 +2017,38 @@ int ProgressBar_Test_002()
 // Tests ProgressBar Operator !=
 int ProgressBar_Test_003()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    ProgressBar testProgressBar(testPosition, testRotation, testScale, testVisible, testDisabled);
+    ProgressBar testProgressBar1(testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(1, 22, 3);
+    ProgressBar testProgressBar2(testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    if (testProgressBar != testProgressBar)
+    {
+        std::cerr << "ProgressBar_Test_003 Failed. Progress Bar did not equal itself" << std::endl;
+        return 0;
+    }
+
+    if (testProgressBar != testProgressBar1)
+    {
+        std::cerr << "ProgressBar_Test_003 Failed. Progress Bar did not equal progress bar with the same values" << std::endl;
+        return 0;
+    }
+
+    if (testProgressBar != testProgressBar2)
+    {
+    }
+    else
+    {
+        std::cerr << "ProgressBar_Test_003 Failed. Progress Bar equaled progress bar with the different position" << std::endl;
+        return 0;
+    }
 
     std::cout << "ProgressBar_Test_003 Passed" << std::endl;
     return 1;
