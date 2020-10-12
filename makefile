@@ -184,3 +184,6 @@ clean:
 	rm -f $(TARGET)
 	rm -f $(TESTTARGET)
 	rm -rf $(BINDIR)
+
+check:
+	bin/Test

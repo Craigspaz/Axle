@@ -2567,9 +2567,11 @@ int main()
     if (numberOfTestsPassed == numberOfTests)
     {
         std::cout << "Results: " << numberOfTestsPassed << "/" << numberOfTests << " Passed!" << std::endl;
+        return 0;
     }
     else
     {
         std::cerr << "Results: " << numberOfTestsPassed << "/" << numberOfTests << " Passed!" << std::endl;
+        return numberOfTestsPassed;
     }
 }
