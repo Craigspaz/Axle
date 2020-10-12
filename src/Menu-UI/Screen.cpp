@@ -9,6 +9,32 @@ Screen::~Screen()
 {
 }
 
+void Screen::render()
+{
+}
+
+std::vector<UIElement *> Screen::getElements()
+{
+    return _elements;
+}
+
+void Screen::addElement(UIElement *element)
+{
+    _elements.push_back(element);
+}
+
+void Screen::removeElement(UIElement *element)
+{
+    for (int i = 0; i < _elements.size(); i++)
+    {
+        if (_elements[i] == element)
+        {
+            _elements.erase(_elements.begin() + i);
+            break;
+        }
+    }
+}
+
 UIElement Screen::toParentObject() const
 {
     return ((UIElement)(*this));

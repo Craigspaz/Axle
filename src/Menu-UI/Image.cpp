@@ -9,6 +9,10 @@ Image::~Image()
 {
 }
 
+void Image::render()
+{
+}
+
 UIElement Image::toParentObject() const
 {
     return ((UIElement)(*this));

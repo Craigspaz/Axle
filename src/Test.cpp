@@ -2057,6 +2057,149 @@ int ProgressBar_Test_003()
 // Tests RadioButton Getters and Setters
 int RadioButton_Test_001()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    std::vector<std::string> options;
+    options.push_back("Test Item 1");
+    options.push_back("Test Item 2");
+
+    RadioButton testRadioButton(options, options.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests if the options list is the same size as the list inputted
+    if (testRadioButton.getOptions().size() != options.size())
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getOptions().size() did not match the number of values put in. Expected: " << options.size() << ". Got: " << testRadioButton.getOptions().size() << std::endl;
+        return 0;
+    }
+
+    testRadioButton.addOption("Test Item 3");
+
+    // Tests if the options list is the same size as the original list plus one since an item was added
+    if (testRadioButton.getOptions().size() != options.size() + 1)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getOptions().size() did not match the number of in the options list after adding an item. Expected: " << options.size() << ". Got: " << testRadioButton.getOptions().size() << std::endl;
+        return 0;
+    }
+
+    testRadioButton.removeOption("Test Item 3");
+
+    // Tests if the options list is the same size as the original list since an item was removed
+    if (testRadioButton.getOptions().size() != options.size())
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getOptions().size() did not match the number of in the options list after removing an item. Expected: " << options.size() << ". Got: " << testRadioButton.getOptions().size() << std::endl;
+        return 0;
+    }
+
+    // Tests if the default option is 0
+    if (testRadioButton.getDefaultOption() != 0)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getDefaultOption() did not match the default option. Expected: 0"
+                  << ". Got: " << testRadioButton.getDefaultOption() << std::endl;
+        return 0;
+    }
+
+    // Tests if the default option is the item in the 0th position
+    if (testRadioButton.getDefaultValue().compare(options[0]) != 0)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getDefaultValue() did not match the default option. Expected: " << options[0] << ". Got: " << testRadioButton.getDefaultValue() << std::endl;
+        return 0;
+    }
+
+    testRadioButton.setDefaultOption(1);
+    // Tests if the default option is now 1
+    if (testRadioButton.getDefaultOption() != 1)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getDefaultOption() did not match the default option. Expected: 1"
+                  << ". Got: " << testRadioButton.getDefaultOption() << std::endl;
+        return 0;
+    }
+
+    // Tests if the default options value matches the expected value
+    if (testRadioButton.getDefaultValue().compare(options[1]) != 0)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getDefaultValue() did not match the default option. Expected: " << options[1] << ". Got: " << testRadioButton.getDefaultValue() << std::endl;
+        return 0;
+    }
+
+    // Tests the selected option is defaulted to 0
+    if (testRadioButton.getSelectedOption() != 0)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getSelectedOption() did not match the default option. Expected: 0"
+                  << ". Got: " << testRadioButton.getSelectedOption() << std::endl;
+        return 0;
+    }
+
+    // Tests if the selected value is the 0th element in the list
+    if (testRadioButton.getSelectedValue().compare(options[0]) != 0)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getSelectedValue() did not match the default option. Expected: " << options[0] << ". Got: " << testRadioButton.getSelectedValue() << std::endl;
+        return 0;
+    }
+
+    testRadioButton.setSelectedOption(1);
+    // Tests if the selection option is now 1
+    if (testRadioButton.getSelectedOption() != 1)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getSelectedOption() did not match the default option. Expected: 1"
+                  << ". Got: " << testRadioButton.getSelectedOption() << std::endl;
+        return 0;
+    }
+
+    // Tests if the selected value matches the expected one
+    if (testRadioButton.getSelectedValue().compare(options[1]) != 0)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getSelectedValue() did not match the default option. Expected: " << options[1] << ". Got: " << testRadioButton.getSelectedValue() << std::endl;
+        return 0;
+    }
+
+    // Tests if the values in the options match
+    for (int i = 0; i < testRadioButton.getOptions().size(); i++)
+    {
+        if (testRadioButton.getOptions()[i].compare(options[i]) != 0)
+        {
+            std::cerr << "RadioButton_Test_001 Failed. The options did not match values" << std::endl;
+            return 0;
+        }
+    }
+
+    // Tests the getPosition() getter and constructor
+    if (testRadioButton.getPosition() != testPosition)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getPosition did not match position put into constructor. Expected: " << glm::to_string(testPosition) << ". Got: " << glm::to_string(testRadioButton.getPosition()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getRotation() getter and constructor
+    if (testRadioButton.getRotation() != testRotation)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getRotation did not match rotation put into constructor. Expected: " << glm::to_string(testRotation) << ". Got: " << glm::to_string(testRadioButton.getRotation()) << std::endl;
+        return 0;
+    }
+
+    // Tests the getScale() getter and constructor
+    if (testRadioButton.getScale() != testScale)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. getScale did not match scale put into constructor. Expected: " << glm::to_string(testScale) << ". Got: " << glm::to_string(testRadioButton.getScale()) << std::endl;
+        return 0;
+    }
+
+    // Tests the isVisible() getter and constructor
+    if (testRadioButton.isVisible() != testVisible)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. isVisible did not match visibility put into constructor. Expected: " << testVisible << ". Got: " << testRadioButton.isVisible() << std::endl;
+        return 0;
+    }
+
+    // Tests the isDisabled() getter and constructor
+    if (testRadioButton.isDisabled() != testDisabled)
+    {
+        std::cerr << "RadioButton_Test_001 Failed. isDisabled did not match disabled state put into constructor. Expected: " << testDisabled << ". Got: " << testRadioButton.isDisabled() << std::endl;
+        return 0;
+    }
 
     std::cout << "RadioButton_Test_001 Passed" << std::endl;
     return 1;

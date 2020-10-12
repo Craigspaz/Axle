@@ -9,6 +9,8 @@ public:
     TextField(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
     ~TextField();
 
+    void render();
+
     UIElement toParentObject() const;
     bool operator==(const TextField &textField);
     bool operator!=(const TextField &textField);

@@ -8,6 +8,10 @@ RadioButton::RadioButton(std::vector<std::string> options, int numberOfOptions, 
 {
 }
 
+void RadioButton::render()
+{
+}
+
 std::vector<std::string> RadioButton::getOptions()
 {
     return _options;

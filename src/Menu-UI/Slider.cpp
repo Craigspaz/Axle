@@ -9,6 +9,10 @@ Slider::~Slider()
 {
 }
 
+void Slider::render()
+{
+}
+
 UIElement Slider::toParentObject() const
 {
     return ((UIElement)(*this));

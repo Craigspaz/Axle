@@ -10,6 +10,10 @@ ProgressBar::~ProgressBar()
 {
 }
 
+void ProgressBar::render()
+{
+}
+
 float ProgressBar::getProgress()
 {
     return _progress;

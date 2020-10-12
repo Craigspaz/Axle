@@ -9,6 +9,10 @@ TextField::~TextField()
 {
 }
 
+void TextField::render()
+{
+}
+
 UIElement TextField::toParentObject() const
 {
     return ((UIElement)(*this));

@@ -9,6 +9,8 @@ public:
     ProgressBar(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
     ~ProgressBar();
 
+    void render();
+
     float getProgress();
     void setProgress(float progress);
 

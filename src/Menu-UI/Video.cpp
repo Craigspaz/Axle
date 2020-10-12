@@ -9,6 +9,10 @@ Video::~Video()
 {
 }
 
+void Video::render()
+{
+}
+
 UIElement Video::toParentObject() const
 {
     return ((UIElement)(*this));

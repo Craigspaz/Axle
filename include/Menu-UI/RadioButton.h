@@ -10,6 +10,8 @@ public:
     RadioButton(std::vector<std::string> options, int numberOfOptions, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, bool visible = true, bool disabled = false);
     ~RadioButton();
 
+    void render();
+
     std::vector<std::string> getOptions();
     void addOption(std::string option);
     void removeOption(std::string option);
