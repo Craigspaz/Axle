@@ -2,16 +2,14 @@
 #define __MESHCOLLIDER__
 #include "Collider.h"
 
-class MeshCollider: public Collider
+class MeshCollider : public Collider
 {
-    public:
-        MeshCollider();
-        ~MeshCollider();
-        
-    private:
+public:
+    MeshCollider();
+    ~MeshCollider();
 
-    protected:
+private:
+protected:
 };
-
 
 #endif

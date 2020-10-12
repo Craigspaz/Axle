@@ -3,13 +3,12 @@
 
 class Mouse
 {
-    public:
-        Mouse();
-        ~Mouse();
-        
-    private:
+public:
+    Mouse();
+    ~Mouse();
 
-    protected:
+private:
+protected:
 };
 
 #endif

@@ -2,14 +2,14 @@
 #define __POINTLIGHT__
 #include "Light.h"
 
-class PointLight: public Light
+class PointLight : public Light
 {
-    public:
-        PointLight();
-        ~PointLight();
-    private:
+public:
+    PointLight();
+    ~PointLight();
 
-    protected:
+private:
+protected:
 };
 
 #endif

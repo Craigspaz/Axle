@@ -2,14 +2,14 @@
 #define __SPHERECOLLIDER__
 #include "Collider.h"
 
-class SphereCollider: public Collider
+class SphereCollider : public Collider
 {
-    public:
-        SphereCollider();
-        ~SphereCollider();
-    private:
+public:
+    SphereCollider();
+    ~SphereCollider();
 
-    protected:
+private:
+protected:
 };
 
 #endif

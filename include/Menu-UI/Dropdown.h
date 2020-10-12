@@ -33,6 +33,7 @@ private:
     std::vector<std::string> _options; // Array of options
     int _selected;
     int _default;
+
 protected:
 };
 

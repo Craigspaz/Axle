@@ -3,13 +3,12 @@
 
 class Entity
 {
-    public:
-        Entity();
-        ~Entity();
-        
-    private:
+public:
+    Entity();
+    ~Entity();
 
-    protected:
+private:
+protected:
 };
 
 #endif

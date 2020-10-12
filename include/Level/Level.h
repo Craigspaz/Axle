@@ -3,13 +3,12 @@
 
 class Level
 {
-    public:
-        Level();
-        ~Level();
-    private:
+public:
+    Level();
+    ~Level();
 
-    protected:
+private:
+protected:
 };
-
 
 #endif

@@ -42,7 +42,27 @@ UIElement Screen::toParentObject() const
 
 bool Screen::operator==(const Screen &screen)
 {
-    return (this->toParentObject() == screen.toParentObject());
+    bool part1 = (this->_elements.size() == screen._elements.size() && this->toParentObject() == screen.toParentObject());
+    bool elements = false;
+
+    if (part1)
+    {
+        bool brokeOut = false;
+        for (int i = 0; i < this->_elements.size(); i++)
+        {
+            if (this->_elements[i] != screen._elements[i])
+            {
+                brokeOut = true;
+                break;
+            }
+        }
+        if (!brokeOut)
+        {
+            elements = true;
+        }
+    }
+
+    return part1 && elements;
 }
 
 bool Screen::operator!=(const Screen &screen)

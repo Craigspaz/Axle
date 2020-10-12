@@ -3,13 +3,12 @@
 
 class Effect
 {
-    public:
-        Effect();
-        ~Effect();
+public:
+    Effect();
+    ~Effect();
 
-    private:
-
-    protected:
+private:
+protected:
 };
 
 #endif

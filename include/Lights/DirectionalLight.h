@@ -2,14 +2,14 @@
 #define __DIRECTIONALLIGHT__
 #include "Light.h"
 
-class DirectionalLight: public Light
+class DirectionalLight : public Light
 {
-    public:
-        DirectionalLight();
-        ~DirectionalLight();
-    private:
+public:
+    DirectionalLight();
+    ~DirectionalLight();
 
-    protected:
+private:
+protected:
 };
 
 #endif

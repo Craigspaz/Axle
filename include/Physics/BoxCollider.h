@@ -4,15 +4,12 @@
 
 class BoxCollider : public Collider
 {
-    public:
-        BoxCollider();
-        ~BoxCollider();
-        
-    private:
+public:
+    BoxCollider();
+    ~BoxCollider();
 
-    protected:
-
+private:
+protected:
 };
-
 
 #endif

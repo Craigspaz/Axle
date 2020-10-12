@@ -3,15 +3,12 @@
 
 class Camera
 {
-    public:
-        Camera();
-        ~Camera();
+public:
+    Camera();
+    ~Camera();
 
-    private:
-
-    protected:
-
+private:
+protected:
 };
-
 
 #endif

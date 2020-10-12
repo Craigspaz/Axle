@@ -3,12 +3,12 @@
 
 class Light
 {
-    public:
-        Light();
-        ~Light();
-    private:
+public:
+    Light();
+    ~Light();
 
-    protected:
+private:
+protected:
 };
 
 #endif

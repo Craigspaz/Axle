@@ -3,13 +3,12 @@
 
 class Collider
 {
-    public:
-        Collider();
-        ~Collider();
+public:
+    Collider();
+    ~Collider();
 
-    private:
-
-    protected:
+private:
+protected:
 };
 
 #endif

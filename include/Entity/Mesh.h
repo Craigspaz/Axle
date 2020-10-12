@@ -3,13 +3,12 @@
 
 class Mesh
 {
-    public:
-        Mesh();
-        ~Mesh();
-        
-    private:
+public:
+    Mesh();
+    ~Mesh();
 
-    protected:
+private:
+protected:
 };
 
 #endif

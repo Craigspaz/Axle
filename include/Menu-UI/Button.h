@@ -16,7 +16,7 @@ public:
 
     std::string getText();
     void setText(std::string text);
-    
+
     UIElement toParentObject() const;
 
     bool operator==(const Button &button);

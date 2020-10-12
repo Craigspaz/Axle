@@ -3,15 +3,12 @@
 
 class Texture
 {
-    public:
-        Texture();
-        ~Texture();
+public:
+    Texture();
+    ~Texture();
 
-    private:
-
-    protected:
-
+private:
+protected:
 };
-
 
 #endif

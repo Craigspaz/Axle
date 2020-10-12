@@ -2,14 +2,14 @@
 #define __AREALIGHT__
 #include "Light.h"
 
-class AreaLight: public Light
+class AreaLight : public Light
 {
-    public:
-        AreaLight();
-        ~AreaLight();
-    private:
+public:
+    AreaLight();
+    ~AreaLight();
 
-    protected:
+private:
+protected:
 };
 
 #endif

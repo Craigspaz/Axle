@@ -3,13 +3,12 @@
 
 class Music
 {
-    public:
-        Music();
-        ~Music();
+public:
+    Music();
+    ~Music();
 
-    private:
-
-    protected:
+private:
+protected:
 };
 
 #endif

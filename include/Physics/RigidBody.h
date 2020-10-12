@@ -3,12 +3,12 @@
 
 class RigidBody
 {
-    public:
-        RigidBody();
-        ~RigidBody();
-    private:
+public:
+    RigidBody();
+    ~RigidBody();
 
-    protected:
+private:
+protected:
 };
 
 #endif

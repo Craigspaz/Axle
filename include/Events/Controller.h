@@ -3,12 +3,12 @@
 
 class Controller
 {
-    public:
-        Controller();
-        ~Controller();
-    private:
+public:
+    Controller();
+    ~Controller();
 
-    protected:
+private:
+protected:
 };
 
 #endif

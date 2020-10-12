@@ -3,12 +3,12 @@
 
 class Keyboard
 {
-    public:
-        Keyboard();
-        ~Keyboard();
-    private:
+public:
+    Keyboard();
+    ~Keyboard();
 
-    protected:
+private:
+protected:
 };
 
 #endif

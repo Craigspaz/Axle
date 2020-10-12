@@ -1,17 +1,14 @@
 #ifndef __SHADER__
 #define __SHADER__
 
-class Shader 
+class Shader
 {
-    public:
-        Shader();
-        ~Shader();
+public:
+    Shader();
+    ~Shader();
 
-        
-    private:
-
-    protected:
+private:
+protected:
 };
-
 
 #endif
