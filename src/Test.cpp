@@ -2567,6 +2567,7 @@ int main()
     if (numberOfTestsPassed == numberOfTests)
     {
         std::cout << "Results: " << numberOfTestsPassed << "/" << numberOfTests << " Passed!" << std::endl;
+        std::cout << "All Tests Passed!" << std::endl; 
         return 0;
     }
     else
