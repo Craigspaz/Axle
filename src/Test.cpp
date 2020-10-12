@@ -2312,6 +2312,45 @@ int RadioButton_Test_002()
 // Tests RadioButton Operator !=
 int RadioButton_Test_003()
 {
+    glm::vec3 testPosition(1, 2, 3);
+    glm::vec3 testRotation(4, 5, 6);
+    glm::vec3 testScale(7, 8, 9);
+    bool testVisible = false;
+    bool testDisabled = true;
+
+    std::vector<std::string> options;
+    options.push_back("Test Item 1");
+    options.push_back("Test Item 2");
+
+    RadioButton testRadioButton(options, options.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+    RadioButton testRadioButton1(options, options.size(), testPosition, testRotation, testScale, testVisible, testDisabled);
+
+    glm::vec3 testPosition2(1, 2, 23);
+    RadioButton testRadioButton2(options, options.size(), testPosition2, testRotation, testScale, testVisible, testDisabled);
+
+    // Tests if a radio button does not equal itself
+    if (testRadioButton != testRadioButton)
+    {
+        std::cerr << "RadioButton_Test_003 Failed. RadioButton did not equal itself" << std::endl;
+        return 0;
+    }
+
+    // Tests if a radio button does not equal a radio button with the same values
+    if (testRadioButton != testRadioButton1)
+    {
+        std::cerr << "RadioButton_Test_003 Failed. RadioButton did not equal a radio button with the same values" << std::endl;
+        return 0;
+    }
+
+    // Tests if a radio button does not equal a radio button with different positions
+    if (testRadioButton != testRadioButton2)
+    {
+    }
+    else
+    {
+        std::cerr << "RadioButton_Test_003 Failed. RadioButton equald a radio button with different values" << std::endl;
+        return 0;
+    }
 
     std::cout << "RadioButton_Test_003 Passed" << std::endl;
     return 1;
